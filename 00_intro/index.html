@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png">
+
+    <title>Intro</title>
+
+    <meta name="description" content="Краткое описание презентации">
+    <meta name="author" content="Имя автора">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="css/user.css">
+	<link rel="stylesheet" href="css/tomorrow.css">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+    <section>
+        <h3>5. Вводная в автотесты</h3>
+        <ol>
+            <li class="fragment">Зачем писать код чтобы тестировать код?</li>
+            <li class="fragment">Мой первый тест на JavaScript</li>
+            <li class="fragment">Красочные отчеты</li>
+        </ol>
+    </section>
+
+    <section data-background="black">
+        <img src="images/mocha_nyan_reporter.gif" alt="mocha_nyan_reporter">
+    </section>
+</section>
+
+<section>
+    <h3>6. Продолжаем автотесты</h3>
+    <ol>
+        <li class="fragment">Стратегии тестирования</li>
+        <li class="fragment">Инструменты автотестировщика</li>
+        <li class="fragment">Упрощаем и ускоряем</li>
+    </ol>
+</section>
+
+<section>
+    <h3>7. Продвинутый уровень</h3>
+    <ol>
+        <li class="fragment">Интеграционные тесты</li>
+        <li class="fragment">Проверяем API</li>
+        <li class="fragment">Первые шаги тестирования в браузере</li>
+    </ol>
+</section>
+
+<section>
+    <h3>8. Тестируем в браузере</h3>
+    <ol>
+        <li class="fragment">Знакомимся с Selenium</li>
+        <li class="fragment">Запускаем тесты во всех браузерах на ноуте</li>
+        <li class="fragment">Уносимся в облака</li>
+    </ol>
+</section>
+
+<section>
+    <h3>9. Бонусная</h3>
+    <ol>
+        <li class="fragment">Тестирование качества кода</li>
+        <li class="fragment">Кто лучше тесты написал?</li>
+        <li class="fragment">"Стреляем из танка"</li>
+        <li class="fragment">Ты непройдёшь! Тесты в CI</li>
+    </ol>
+</section>
+
+<section>
+    <section data-background="images/yandex_connect.png">
+    </section>
+
+    <section data-background="images/yandex_tracker_list.png">
+    </section>
+
+    <section data-background="images/yandex_tracker_task.png">
+    </section>
+</section>
+
+<section>
+    <h3>Домашние задания</h3>
+    <ul>
+        <li class="fragment">После каждой лекции</li>
+        <li class="fragment">В трекере или на GitHub</li>
+        <li class="fragment">Проверяют яндексоиды</li>
+        <li class="fragment">Дедлайны</li>
+    </ul>
+</section>
+
+<section>
+    <section>
+        <h3>Настоящий проект</h3>
+        <img src="images/hackathon.svg" alt="hackathon">
+    </section>
+
+    <section>
+        <ul>
+            <li class="fragment">Проверка знаний в бою</li>
+            <li class="fragment">Взаимодействие с разработчиками</li>
+            <li class="fragment">Сделаем <span style="text-decoration: line-through">мир</span> проекты лучше!</li>
+        </ul>
+    </section>
+</section>
+
+<section>
+    <h3>Зачёт</h3>
+    <ol>
+        <li class="fragment">Получить допуск (3 домашки)</li>
+        <li class="fragment">Автомат (все домашки)</li>
+        <li class="fragment">Итоговый тест</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Вопросы</h3>
+    <ul>
+        <li>Нужно ли носить с собой ноут на пару? (нет)</li>
+        <li>Когда проходит пара? (по средам, 19:30)</li>
+        <li>Куда приходить? (509 аудитория)</li>
+    </ul>
+</section>
+
+</div></div>
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: 'js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>
