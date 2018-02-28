@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png">
+
+    <title>Заголовок вкладки</title>
+
+    <meta name="description" content="Краткое описание презентации">
+    <meta name="author" content="Имя автора">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="css/user.css">
+	<link rel="stylesheet" href="css/tomorrow.css">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+
+    <section>
+        <h1>Тестирование ПО</h1>
+        <br>
+        <ul class="fragment"><b>Темы лекции:</b>
+            <li>Разработка программного обеспечения</li>
+            <li>Релизный процесс</li>
+            <li>Тестировщик в процессе разработки</li>
+            <li>Виды тестирования</li>
+            <li>Практика</li>
+        </ul>
+        <br>
+        <p class="author">Сергеева Анастасия</p>
+    </section>
+
+
+<!-- Добавлять новые слайды сюда -->
+    <section>
+
+        <section>
+            <h2>Часть 1</h2>
+            <h2>Разработка программного обеспечения</h2>
+        </section>
+
+        <section>
+            <ul>
+                <li><h4>Что такое ПО?</h4> </li>
+                <p class="fragment">Любая программа от маленькой страницы до мощной системы проектирования <br> <img  width="178" height="138" data-src="img/1.jpg" alt="YANDEX" align="right"></p>
+
+                <li><h4 class="fragment">Откуда это все берется?</h4> </li>
+                <p class="fragment">Идея или необходимость? <br> <img  src="img/2.jpg" alt="YANDEX" align="right"></p>
+
+            </ul>
+        </section>
+
+        <section>
+            <p>Выделяем следующие виды разработок:</p>
+            <ul>
+                <li class="fragment"><p> <b>Заказная</b> - заказчик пришел в ИТ-фирму, чтобы решить свою проблему (необходимсоть)</p></li>
+                <li class="fragment"><p><b>Продуктовая</b> - проанализировав рынок, было выявлено, что есть необходимость в каком-либо сервисе - его и делаем и продаем (идея)</p></li>
+            </ul>
+        </section>
+
+        <section>
+            <p>Поняли, что необходимость в ПО есть.<br> Что дальше?</p>
+            <h3 class="fragment">Разрабатываем!<br> <img   height="400" data-src="img/3.jpg" alt="YANDEX"> </h3>
+        </section>
+
+        <section>
+            <h4>Этапы разработки ПО</h4>
+            <ul>
+                <li class="fragment">Анализ требований и проектирование </li>
+                <li class="fragment">Кодирование и дизайн</li>
+                <li class="fragment">Тестирование и отладка</li>
+                <small class="fragment"><u>Примечание!</u> <br> <b>QA [Quality Assurance]</b>- обеспечения качества выпускаемого продукта на всех этапах и стадиях жизненного цикла разработки ПО.<br> <b>QC [Quality Control]</b>- получение информации о соотвествии продукта и требований к нему.</small>
+                <li class="fragment">Внедрение</li>
+                <li class="fragment">Сопровождение и улучшение</li>
+            </ul>
+            </section>
+
+        <section>
+            <small> В зависимости от вида разработки и выбранной <span class="fragment highlight-red visible current-fragment">методологии</span> эти этапы могут использоваться один или несколько раз.</small>
+            <h3 class="fragment">Методологии разработки</h3>
+               <h4 class="fragment">Waterfall</h4><p class="fragment">Каскадная модель - Водопад - Waterfall<br>
+                    <img align="center"  height="450"  data-src="img/5.jpg" alt="YANDEX"></p>
+        </section>
+        <section>
+            <h3>Плюсы модели</h3>
+            <ul class="fragment">
+                <li>Полное документирование каждого этапа;</li>
+                <li>Четкое планирование сроков и затрат;</li>
+                <li>Прозрачность процессов для заказчика;</li>
+            </ul>
+            <h3>Минусы модели</h3>
+            <ul class="fragment">
+            <li>Надо сразу знать все требования;</li>
+            <li>Нельзя ничего существенно изменить;</li>
+            <li>Велика цена изменений в требованиях;</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Методологии разработки</h3>
+            <h4>Гибкая модель - Agile</h4>
+            <p> - это философия. <!--Аджайлисты верят, что идеальные продукты создают команды самостоятельных профессионалов.</p> -->
+            <small><ul class="fragment"><b>Основные принципы:</b>
+
+                    <li>это быть командами профессионалов, не нуждающейся в начальниках</li>
+                    <li>это работа вместе с клиентом, эксперименты и готовность к изменениям</li>
+                    <li>это быстрый выпуск работающего качественного продукта</li>
+
+            </ul></small>
+            <p class="fragment">мы рассмотрим методики — Scrum и Kanban</p>
+            <small><p class="fragment">- это набор готовых правил, показывающих как организовать рабочий процесс по принципам Аджайл</p></small>
+   </section>
+
+        <section data-background="img/6.jpg">
+        </section>
+
+        <section>
+            <h3>Плюсы модели</h3>
+            <ul class="fragment">
+                <li>Короткие и понятные итерации в итоге которых - рабочая версия продукта;</li>
+                <li>Тесное общение всех участников процесса разработки;</li>
+                <li>Гибкая система внесения изменений;</li>
+            </ul>
+            <h3>Минусы модели</h3>
+            <ul class="fragment">
+                 <li>Высокая степень самоорганизации;</li> <!-- улучшение эффективности собственной работы, все время обмен инфы по проекту, быть мотивированным и самоорганизованным -->
+                <li>Постоянные изменения проекта отодвигают его от финальной версии;</li>
+                <li>Сложность в оценка времени достижения "идеальной" версии и ее цена;</li>
+            </ul>
+        </section>
+        <section data-background-video="img/1.mp4" style="text-shadow: 0 0 10px #fff;">
+
+            <h3>Как выглядит работа в рамках скрам-модели:</h3>
+            <ul>
+                <li class="fragment">Составляем список задач и доработок </li>
+                <li class="fragment">Выбираем те задачи, которые делаем сейчас </li>
+                <li class="fragment">Назначаем ответственных на каждую задачу и исполняем их</li>
+                <li class="fragment">Получаем новую версию продукта</li>
+                <li class="fragment">Ретроспектива</li>
+                <li class="fragment">Планируем следующий спринт</li>
+            </ul>
+        </section>
+        <section data-background="img/6.1.jpg">
+            <h3 class="fragment">Особенности модели:</h3>
+            <ul class="fragment">
+                <li>Каждая задача - "фича", которую можно "продать";</li>
+                <li>Нет оценки временем, но есть приоритеты;</li>
+                <li>Нет спринтов - всё делается тогда, когда это нужно;</li>
+                <li>Лимит на количество задач;</li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+        </section>
+        <section>
+            <h3>Плюсы модели:</h3>
+            <ul class="fragment">
+                <li>Визуализация;</li>
+                <li>Не надо планировать - надо делать;</li>
+                <li>Внимание к мелочам;</li>
+            </ul>
+            <h3>Минусы модели:</h3>
+            <ul class="fragment">
+                <p>аналогично scram + </p>
+                <li>Нет сроков;</li>
+                <li>Лимит на количество задач</li>
+            </ul>
+        </section>
+    </section>
+
+    <section>
+        <section>
+            <h2>Часть 2</h2>
+            <h2 class="fragment">Релизный процесс</h2>
+        </section>
+
+        <section>
+            <h3>C чего начинается релиз?</h3>
+            <img align=" center " height="200"  data-src="img/3.gif" alt="YANDEX">
+            <img class="fragment" align=" center " height="400"  data-src="img/11.jpg" alt="YANDEX">
+        </section>
+
+        <section>
+            <ul>Преимущество баг-трекеров:
+                <small>
+                <li>Типирование и группировка задач.</li>
+                <li>Назначение и уведомления всех участников.</li>
+                <li>Настраиваемый жизненный цикл для задачи.</li>
+                <li>Отслеживание продвижение проекта при помощи досок.</li>
+                <li>Автоматический сбор статистики.</li>
+                </small>
+            </ul>
+            <p class="fragment">Пример просмотра задач в <a href="https://tracker.yandex.ru/UNIC/">Яндекс.Трекер</a>:</p>
+            <img align=" center " height="300"  data-src="img/12.jpg" alt="YANDEX">
+        <!--
+            GBp3pyA6QFn4Yasy
+            sergeeva-a@for-testing-coursers.yaconnect.com
+            -->
+
+        </section>
+
+        <section>
+            <p>Пример реальной встречи</p>
+            <img  align=" center " height="600"  data-src="img/10.jpg" alt="YANDEX">
+        </section>
+        <section>
+            <b>Итог встречи</b>
+            <ul class="fragment">
+                    <li>Теперь все в курсе изменений;</li>
+                    <li>Нашли решение проблем;</li>
+                    <li>Обновили диаграмму и проанализировали ритм работы</li>
+            </ul>
+        </section>
+    <section>
+            <p><b>Burndown</b><br> - диаграмма сгорания задач, где шкала OY - затраченное время на задачи, а OX - дни до конца спринта</p>
+            <img class="fragment" align=" center " height="400"  data-src="img/tr.png" alt="YANDEX">
+        </section>
+
+        <section data-background-transition="zoom" data-background="img/tr.png">
+        </section>
+
+        <section>
+            <p>Пример виртуальной встречи</p>
+            <img  align=" center " height="600"  data-src="img/18.png" alt="YANDEX">
+        </section>
+
+        <section data-background="img/p1.png">
+        </section>
+        <section data-background="img/p2.jpg">
+        </section>
+
+        <section>
+            <p>Система контроля версий</p>
+                <img  height="600"  data-src="img/13.png" alt="YANDEX">
+
+        </section>
+        <section>
+            <p>Пример использования системы контроля версий</p>
+            <img class="fragment" height="400"  data-src="img/16.jpg" alt="YANDEX">
+                    <img class="fragment" height="400"  data-src="img/17.jpg" alt="YANDEX">
+
+        </section>
+
+    </section>
+
+    <section>
+
+        <section>
+            <h2>Часть 3</h2>
+            <h2 class="fragment">Тестировщик в процессе разработки</h2>
+        </section>
+
+        <section>
+            <h3>Когда начинается тестирование?</h3>
+            <ul class="fragment">
+                <li><b>Планирование и проектирование</b> - изучение требований, уточнение интересующих вопросов</li>
+                <li><b>Кодирование и дизайн</b> - тестирование в ветке разработчика, помощь в поиске причин дефекта</li>
+                <li><b>Исправление ошибок</b> - проверка функций и возвращение их на доработку</li>
+                <li><b>Сопровождение</b> - анализ ошибок от пользователей</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Зачем начинать тестирование так рано?</h3>
+           <div class="fragment"> <h4>Цена дефекта увеличивается со временем его обнаружения</h4>
+            <img  height="400"  data-src="img/15.jpg" alt="YANDEX"></div>
+        </section>
+
+        <section>
+            <h3>Что делает тестировщик?</h3>
+            <ul class="fragment">
+                <li>Тестирование в ветке разработчика</li>
+                <li>Тестирование релиза</li>
+                <li>Исследование и регистрация дефектов</li>
+                <li>Проектирование тест-планов и сценариев</li>
+                <li>Постановка задач на автотесты</li>
+                <li>Анализ требований</li>
+                <li>Внесение улучшений в продукт</li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Что надо уметь?</h3>
+            <ul class="fragment">
+                <li>Планировать действия</li>
+                <li>Проектировать тесты</li>
+                <li>Наблюдать результат выполнения тестов</li>
+                <li>Находить дефекты</li>
+                <li>Описывать дефекты</li>
+                <li>Общаться с людьми</li>
+            </ul>
+        </section>
+
+    </section>
+
+    <section>
+        <section>
+            <h2>Часть 4</h2>
+            <h2 class="fragment">Виды тестирования</h2>
+        </section>
+
+        <section data-background-transition="zoom" data-background="img/test4.jpg">
+
+        </section>
+
+        <section data-background-transition="zoom" data-background="#f6f6f8">
+            <img  data-src="img/t1.png" alt="YANDEX">
+            <img  data-src="img/t2.png" alt="YANDEX">
+        </section>
+        <section data-background-transition="zoom" data-background="#f6f6f8">
+            <img  data-src="img/t3.png" alt="YANDEX">
+            <img  data-src="img/t4.png" alt="YANDEX">
+            <img  data-src="img/t5.png" alt="YANDEX">
+        </section>
+        <section data-background-transition="zoom" data-background="#f6f6f8">
+            <img  data-src="img/t6.png" alt="YANDEX">
+            <img  data-src="img/t7.png" alt="YANDEX">
+        </section>
+        <section data-background-transition="zoom" data-background="#f6f6f8">
+            <img  height=600 data-src="img/t8.jpg" alt="YANDEX">
+        </section>
+        <section data-background-transition="zoom" data-background="img/test4.jpg">
+
+        </section>
+
+        <section>
+            <h3>Практика</h3>
+
+<small><p><b>Задача:</b> протестировать стул, находящийся в аудитории<br></p>
+    <small><ul class="fragment"> <b>Требования к стулу:</b>
+                        <li>Он должен cтоять на ножках</li>
+                        <li>Он должен иметь сидушку, чтобы на нем можно было сидеть</li>
+                        <li>Он должен иметь спинку, чтобы на нее можно было наклониться</li>
+                        <li>Он должен быть подъемным</li>
+                        <li>Он должен выдержать вес человека до 150 кг</li>
+                        <li>Он должен быть пригодным для использования более 10000 раз</li>
+                        <li>Он должен cтоять в аудитории и т.д.</li>
+
+                    </ul></small>
+                </small>
+
+                        <img class="fragment" height="400"  data-src="img/14.png" alt="YANDEX">
+
+
+
+        </section>
+
+    </section>
+    <section>
+        <h2>Итог</h2>
+        <p>О чем мы сегодня говорили?</p>
+        <ul class="fragment"><b>Темы лекции:</b>
+            <li>Разработка программного обеспечения</li>
+            <li>Релизный процесс</li>
+            <li>Тестировщик в процессе разработки</li>
+            <li>Виды тестирования</li>
+            <li>Практика</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Домашняя работа</h2>
+        <b>Написать тестовые ситуации на каждый тип функционального и нефункционального тестирования для окна отправки сообщения на Яндекс.Ямб</b>
+<br>
+        <small><ol>
+            <li>Отправить на e-mail <b>y.students@yandex.ru</b> ФИО и желаемьный логин</li>
+            <li>С полученным логином и паролем зайти в Яндекс.Коннект: <b>https://connect.yandex.ru/</b></li>
+            <li>Перейти в раздел "Трекер" в очередь <b>YAMB</b> </li>
+        <li>Нажать кнопку "Создать задачу":
+            <ul>
+                <li>В качестве Названия задачи указать "Домашняя задача #1"</li>
+                <li>Выбрать шаблон "Домашняя работа №1" и вместо слов <Тестовый случай> вписать соответсвующие ответы на домашнюю задачу</li></ul></li>
+        <li>Нажать кнопку "Создать"</li>
+            </ol> </small><br>
+       <small><small align="left"> <b>примечание:</b> <br> если у задачи статус "в работе" - ее взяли на проверку; <br> "требуется информация" - есть замечания и их надо исправить; <br> "решен" - решение задачи принято.</small></small>
+
+        <p>Яндекс.Ямб можно посмотреть в Яндекс.Коннекте</p>
+
+    </section>
+
+    <section>
+        <h2>Литература</h2>
+        <small>
+        <ul>
+            <li>«Тестировщик — больше, чем профессия» <a href="http://habrahabr.ru/post/221447/">http://habrahabr.ru/post/221447/</a></li>
+            <li>«Что должен уметь начинающий тестировщик»: С чего начать, как прокачаться, во что углубиться <a href="http://testbase.ru/">http://testbase.ru/</a></li>
+            <li> О Waterfall: <a href="http://xbsoftware.ru/blog/zhiznennyj-tsykl-po-kaskadnaya-model-waterfall">http://xbsoftware.ru/blog/zhiznennyj-tsykl-po-kaskadnaya-model-waterfall/</a></li>
+            <li>О Scrum: <a href="http://xbsoftware.ru/blog/zhiznennyj-tsykl-po-skram-po-shagam/">http://xbsoftware.ru/blog/zhiznennyj-tsykl-po-skram-po-shagam/</a></li>
+            <li>О Kanban: <a href="http://xbsoftware.ru/blog/zhiznennyj-tsykl-po-kanban/">http://xbsoftware.ru/blog/zhiznennyj-tsykl-po-kanban/</a></li>
+            <li>Роман Савин «Тестирование dot.com»</li>
+            <li>Сэм Канер «Тестирование программногo обеспечения»</li>
+        </ul>
+        </small>
+    </section>
+
+    <section>
+        <h2>Спасибо за внимание!</h2>
+        <h2>Вопросы?</h2>
+    </section>
+
+
+</div></div>
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: 'js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>
