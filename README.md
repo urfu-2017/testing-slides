@@ -1,5 +1,5 @@
 # Слайды курса по тестированию
 
 0. [Вводная лекция](https://urfu-2017.github.io/testing-slides/00_intro)
-1. [Разработка ПО. Релизный процесс. Роль тестировщика. Виды тестирования](https://urfu-2017.github.io/testing-slides/01_live_cycle/)
-2. [Тесткейс. Дефект.](https://urfu-2017.github.io/testing-slides/02_tc/) [Домашняя работа](02_homework/README.md)
+1. [Разработка ПО. Релизный процесс. Роль тестировщика. Виды тестирования](https://urfu-2017.github.io/testing-slides/01_live_cycle/) \[[Домашняя работа](https://urfu-2017.github.io/testing-slides/01_live_cycle/index.html#/6)\]
+2. [Тесткейс. Дефект](https://urfu-2017.github.io/testing-slides/02_tc/) \[[Домашняя работа](02_homework/README.md)\]
