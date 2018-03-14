@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png">
+
+    <title>Тест Дизайн.</title>
+
+    <meta name="description" content="Краткое описание презентации">
+    <meta name="author" content="Имя автора">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="css/user.css">
+	<link rel="stylesheet" href="css/tomorrow.css">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+    <section>
+        <h1>Тест-дизайн</h1>
+        <p class="author">Селиверстова Наталия</p>
+        <p class="author">Шаров Илья</p>
+    </section>
+
+    <!-- Добавлять новые слайды сюда -->
+    <section>
+        <h3>О чем лекция?</h3>
+        <p class="fragment">Что такое тест-дизайн</p>
+        <p class="fragment">Техники тест-дизайна</p>
+        <p class="fragment">Приемы для проектирования тестов</p>
+        <p class="fragment">Практика!</p>
+    </section>
+
+    <section>
+        <h1>Часть 1</h1>
+        <h2>Теория</h2>
+    </section>
+
+    <section>
+        <h3>Исчерпывающее тестирование</h3>
+        <p class="fragment">Проверяем все воможные случаи/варианты значений</p>
+        <p class="fragment">Если случай тривиальный или проверка экстремально важна</p>
+    </section>
+
+    <section>
+        <h3>Исчерпывающее тестирование</h3>
+        <img  class="fragment" data-src="media/calculator.JPG">
+    </section>
+
+    <section>
+        <h3>Тест-дизайн </h3>
+        <p class="fragment">процесс проектирования тестовых случаев</p>
+    </section>
+
+    <section>
+        <h3>Техники тест-дизайна </h3>
+        <p class="fragment">набор практик и подходов к проектированию тестов</p>
+    </section>
+
+    <section>
+        <H3>Классы эквивалентности</h3>
+        <p class="fragment">Техника для проверки разных наборов входных данных</p>
+        <p class="fragment">Строится на предположениях:</p>
+        <ul class="fragment">
+            <li>для тестов с элементами из одного класса одинаковый ОР</li>
+            <li>если один элемент класса находит ошибку, то и другой ее найдет</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Пример: Длина метки</h3>
+        <img data-src="media/wishlist2.png">
+        <p class="fragment">Длина названия метки не должна превышать 20 символов</p>
+    </section>
+
+    <section>
+        <h3>Классы эквивалентности</h3>
+        <img  data-src="media/class1.png">
+    </section>
+
+    <section>
+        <h3>Что проверим в итоге?</h3>
+        <img  data-src="media/classTest.png">
+    </section>
+
+    <section>
+        <h3>Граничные значения</h3>
+        <p class="fragment">Техника для проверки разных наборов входных данных</p>
+        <p class="fragment">Строится на предположении:</p>
+        <ul class="fragment">
+            <li>ошибки чаще всего случаются на границах классов эквивалентности</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Граничные значения</h3>
+        <img  data-src="media/granitsa1.png">
+    </section>
+
+    <section>
+        <h3>Приграничные значения</h3>
+        <img  data-src="media/granitsa.png">
+    </section>
+
+    <section>
+        <h3>Классы + границы = тесты:</h3>
+        <ul class="fragment">
+            <li> 0 символов </li>
+            <li> 1 символ </li>
+            <li> 12 символов </li>
+            <li> 19 символов </li>
+            <li> 20 символов </li>
+            <li> 21 символ </li>
+            <li> 35 символов </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Правило!</h3>
+        <p class="fragment">Сначала всегда проверяются положительные тест-кейсы</p>
+        <p class="fragment">Они самые важные</p>
+    </section>
+
+    <section>
+        <h3>Классы могут быть разные</h3>
+        <ul class="fragment">
+            <li> по количеству символов </li>
+            <li> по типу символов </li>
+            <li> размер картинки в верстке </li>
+            <li> размер загружаемого файла </li>
+            <li> крайние даты месяца/года </li>
+            <li> и т.д </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Как искать классы и границы?</h3>
+        <ol class="fragment">
+            <li> Каким бывает тестируемое поле? </li>
+            <li> Каким оно не бывает? </li>
+            <li> Какие есть границы между 1 и 2? </li>
+        </ol>
+    </section>
+    <section>
+        <h3>Какие проводить тесты?</h3>
+        <ol class="fragment">
+            <li> Выбрать по 1 представителю от каждого класса </li>
+            <li> Выбрать значения на границах </li>
+            <li> Выбрать приграничные значения </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Идеи для проверок полей ввода</h3>
+        <ul class="fragment">
+            <li> ограничения на длину поля (не больше 9) </li>
+            <li> ограничения на вводимые символов (“,%@, abc) </li>
+            <li> ограничения на положение символов (твит c #) </li>
+            <li> валидность по типу поля (32 мая) </li>
+            <li> обязательность/пустое поле </li>
+            <li> лишние пробелы (в начале/конце/середине) </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Попарное тестирование</h3>
+        <p class="fragment">Техника для формирования сочетания данных, когда есть зависимые поля, и нужно проверить все</p>
+        <p class="fragment">Строится на предположении:</p>
+        <ul class="fragment">
+            <li>большинство ошибок находятся на одном параметре или сочетании двух</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Попарное тестирование</h3>
+        <p class="fragment">Каждое тестируемое значение каждого из проверяемых параметров хотя бы единожды сочетается с каждым тестируемым значением всех остальных проверяемых параметров</p>
+    </section>
+
+    <section>
+        <h3>Попарное тестирование</h3>
+        <img  data-src="media/Pairwise1.png">
+    </section>
+    <section>
+        <h3>Попарное тестирование</h3>
+        <img  data-src="media/Pairwise1.png">
+        <img  data-src="media/Pairwise2.png">
+    </section>
+
+    <section>
+        <h3>Правило!</h3>
+        <p class="fragment"> Нельзя объединять два негативных кейса в один</p>
+        <p class="fragment"> Иначе будет непонятно, который обработался программой</p>
+    </section>
+
+    <section>
+        <h3>Диаграмма состояний</h3>
+        <p class="fragment">Техника для сущностей, у которых есть жизненный цикл</p>
+        <p class="fragment">Помогает найти все состояния объекта, переходы и условия переходов между состояниями</p>
+    </section>
+
+    <section>
+        <h3>Диаграмма состояний</h3>
+        <img  data-src="media/diagramS.jpg">
+    </section>
+
+    <section>
+        <h3>Диаграмма состояний</h3>
+        <ul class="fragment">
+            <li> Состояние </li>
+            <li> Переход </li>
+            <li> Событие/условие </li>
+            <li> Действие </li>
+            <li> Точки входа/выхода </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Что проверяем?</h3>
+        <ol class="fragment">
+            <li> Как система ведет себя в определенном состоянии?</li>
+            <li> Факт перехода между состояниями? </li>
+            <li> Если не выполнены все условия для перехода? </li>
+            <li> Если выполнены все условия/события для перехода?  </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Диаграмма состояний</h3>
+        <p class="fragment">Что еще?</p>
+        <p class="fragment">Найти и проверить запрещенные переходы при помощи матрицы переходов</p>
+
+    </section>
+
+    <section>
+        <h3>Состояния письма</h3>
+        <ol class="fragment">
+            <li> Сразу после получения сообщений с почтового сервера они помечены как непрочитанные.</li>
+            <li> Когда пользователь открывает письмо, сообщение становится прочитанным. </li>
+            <li> Пользователь может пометить ранее прочитанные сообщения как непрочитанные. </li>
+            <li> Пользователь может удалить сообщения (как прочитанные, так и непрочитанные), вернуть их нельзя  </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Диаграмма состояний</h3>
+        <img  data-src="media/diagram.png">
+    </section>
+
+    <section>
+        <h3>Матрица переходов</h3>
+        <img  data-src="media/matrix.png">
+    </section>
+
+    <section>
+        <h3>Пример диаграммы состояний</h3>
+        <img  width="800" data-src="media/referee.png">
+    </section>
+
+    <section>
+        <h3>Пример диаграммы состояний</h3>
+        <img  data-src="media/refereeBig.png">
+    </section>
+
+    <section>
+        <h3>MindMap</h3>
+        <img  data-src="media/mindMap.png">
+    </section>
+
+    <section>
+        <h3>Инструменты MindMap</h3>
+        <ul class="fragment">
+            <li> XMind</li>
+            <li> MindJet Mindmanager </li>
+            <li> Mindmeister </li>
+            <li> FreeMind </li>
+            <li> и др. </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Декомпозиция при помощи MindMap</h3>
+        <img  data-src="media/zapros.png">
+    </section>
+
+    <section data-background="media/zapros.png"
+             data-background-size="contain"> </section>
+
+    <section>
+        <h3>Другие приемы в тестировании</h3>
+        <img  data-src="media/others.png">
+    </section>
+
+    <section>
+        <h3>Прием "4 действия с объектом"</h3>
+        <ol class="fragment">
+            <li> Создание</li>
+            <li> Просмотр </li>
+            <li> Редактирование</li>
+            <li> Удаление </li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Причина - следствие</h3>
+        <p class="fragment">Причина: Ввод значения в поле и нажатие "Добавить"</p>
+        <p class="fragment">Следствие: Добаленное значение отображается во всех нужных местах</p>
+    </section>
+
+    <section>
+        <h3>"НЕ" к каждому слову в требовании</h3>
+        <p class="fragment">Если (не) код (не) введен (не) верно, открывается страница регистрации</p>
+    </section>
+
+    <section>
+        <h3>Предугадывание ошибки</h3>
+        <p class="fragment">"Пользователь должен ввести код"</p>
+        <ol class="fragment">
+            <li> А что если не ввел код?</li>
+            <li> А что если неправильный код? </li>
+            <li> и тд</li>
+        </ol>
+    </section>
+
+    <section>
+        <h3>Техники и приемы</h3>
+        <ul class="fragment">
+            <li> Классы эквивалентности и анализ граничных значений</li>
+            <li> Попарное тестирование </li>
+            <li> Диаграмма состояний и матрица переходов</li>
+            <li> Приемы: 4 действия, причина-следтсвие, "не" и приедугадывание </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Зачем?</h3>
+        <ul class="fragment">
+            <li> Структурировать</li>
+            <li> Найти все необходимые проверки</li>
+            <li> Сделать тестов меньше, а покрытие больше</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Покрытие</h3>
+        <p class="fragment">Метрика качества тестирования. Полнота охвата тестами требований или кода.</p>
+        <p class="fragment">Отношение количества тестов к количеству требований.</p>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Качество построенных тестов зависит от полноты информации о продукте.</h3>
+    </section>
+
+    <section>
+        <h3>Качество построенных тестов зависит от полноты информации о продукте.</h3>
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <p class="fragment">Если при оформлении заказа товар закончился или цена изменилась, то нужно сообщить об этом покупателю</p>
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <img  data-src="media/checkout1.png">
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <img  data-src="media/checkout2.png">
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <p class="fragment">Обращение по API к магазину происходит трижды</p>
+        <p class="fragment">(прием "причина-следствие")</p>
+    </section>
+
+    <section>
+        <h3>Пример</h3>
+        <img  data-src="media/table.png">
+    </section>
+
+    <section>
+        <h3>Еще раз</h3>
+        <p class="fragment">Качество построенных тестов зависит от полноты информации о продукте.</p>
+    </section>
+
+    <section>
+        <p>Спасибо за внимание!</p>
+        <p>Вопросы?</p>
+        <p></p>
+    </section>
+
+    <section>
+        <h1>Часть 2</h1>
+        <h2>Практика</h2>
+    </section>
+
+    <section>
+        <h1>Протестируем форму регистрации</h1>
+    </section>
+
+    <section data-background-size='contain' data-background = "megaform2.png">
+    </section>
+
+    <section>
+        <h2>Какие группы проверок можно выделить?</h2>
+        <p class = fragment>
+            Конфигурационное тестирование
+        </p>
+        <p class = fragment>
+            Функциональное тестирование
+        </p>
+        <p class = fragment>
+            Интеграционное тестирование
+        </p>
+    </section>
+
+    <section>
+        Валидный - соответствующий требованиям, допустимый.
+    </section>
+
+    <section data-background-size='contain' data-background = "mind.png">
+    </section>
+
+
+    <section>
+        <h2>Поле ввода "Имя"</h2>
+        <img src="name.png">
+        <p class = "fragment" align="left">Требования:</p>
+        <p class = "fragment" align="left">1. Принимает буквенные значения.</p>
+        <p class = "fragment" align="left">2. Длина от 2 до 30 символов.</p>
+        <p class = "fragment" align="left">3. Обязательно к заполнению.</p>
+    </section>
+
+    <section>
+        <h3>Определим классы эквивалентности</h3>
+        <table>
+            <td><td>
+                <ol>
+                    <ol>Принимает только буквенные значения</ol>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Допустимые значения (Буквы)</li>
+                <li class="fragment">Недопустимые значения (Цифры, Спецсимволы)</li>
+            </ul></td></td> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h3>Определим граничные значения</h3>
+        <table>
+            <td><td>
+            <ol>
+                <ol>Длина от 2 до 30 символов</ol>
+            </ol>
+        </td><td><ul>
+            <li class="fragment">Значения на границах (2 символа и 30)</li>
+            <li class="fragment">Приграничные значения (3, 29)</li>
+            <li class="fragment">Значения за пределами границ (1, 45)</li>
+        </ul></td></td> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h2>Позитивные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Принимает только буквенные значения</li>
+                    <li>Длина от 2 до 30 символов.</li>
+                    <li>Обязательно к заполнению.</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Значение внутри диапазона, например "Олег"</li>
+                <li class="fragment">Значение на левой границе диапазона, например "Ян"</li>
+                <li class="fragment">Приграничные значения, "Оля", "Ррррррррррррррррррррррррррррр"</li>
+                <li class="fragment">Значение на правой границе диапазона, например "Паула Хуан Непомукено Криспино"</li>
+                <li class="fragment">Составное имя, например "Анна-Мария"</li>
+            </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+    <section>
+        <h2>Негативные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Принимает буквенные значения</li>
+                    <li>Длина от 2 до 30 символов.</li>
+                    <li>Обязательно к заполнению.</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Пустое поле</li>
+                <li class="fragment">Пробелы</li>
+                <li class="fragment">Спецсимволы</li>
+                <li class="fragment">Цифры</li>
+                <li class="fragment">Ввести > 30 символов</li>
+                <li class="fragment">Ввести < 2 символов</li>
+            </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+    <section>
+        <small>
+        <h1>Позитивный тест кейс</h1>
+        <p class = "fragment" align="left">Проверим, как форма реагирует на простое Имя.</p>
+        <p class = "fragment" align="left">ID: Name1</p>
+        <p class = "fragment" align="left">Название: Регистрация с валидным значением в поле "Имя"</p>
+        <p class = "fragment" align="left">Предусловие: Перейти на страницу регистрации. Все обязательные поля, кроме поля "Имя" необходимо заполнить валидными данными.</p>
+        <p class = "fragment" align="left">Шаги:</p>
+        <p class = "fragment" align="left">1. В поле "Имя" ввести "Пётр"</p>
+        <p class = "fragment" align="left">2. Нажать "Отправить"</p>
+        <p class = "fragment" align="left">Ожидаемый результат: Сообщение об успешной регистрации, с отбивкой на почту.</p>
+        </small>
+    </section>
+
+    <section>
+        <small>
+        <h1>Негативный тест кейс</h1>
+        <p class = "fragment" align="left">Проверим, как форма реагирует на числа</p>
+        <p class = "fragment" align="left">ID: Name2</p>
+        <p class = "fragment" align="left">Название: Регистрация с цифрами в поле "Имя"</p>
+        <p class = "fragment" align="left">Предусловие: Перейти на страницу регистрации. Все обязательные поля, кроме поля "Имя" необходимо заполнить валидными данными.</p>
+        <p class = "fragment" align="left">Шаги:</p>
+        <p class = "fragment" align="left">1. В поле "Имя" ввести 1234567884</p>
+        <p class = "fragment" align="left">2. Нажать "Отправить"</p>
+        <p class = "fragment" align="left">Ожидаемый результат:</p>
+        <p class = "fragment" align="left">Ошибка: В поле "Имя" необходимо вводить буквы</p>
+        </small>
+    </section>
+
+    <section>
+        <h2>Поле ввода "Email"</h2>
+        <img src="email.png">
+        <p class = "fragment" align="left">Требования:</p>
+        <p class = "fragment" align="left">2. Поле проверяет, что бы email был формата login@domain.com</p>
+        <p class = "fragment" align="left">3. Максимальная длина 40 символов</p>
+        <p class = "fragment" align="left">4. Обязательно к заполнению</p>
+    </section>
+
+    <section>
+        <h2>Позитивные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Поле проверяет, что бы email был формата login@domain.com</li>
+                    <li>Максимальная длина 40 символов</li>
+                    <li>Обязательно к заполнению</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Корректный email, например tester@yandex.ru</li>
+            </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h2>Негативные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Поле проверяет, что бы email был формата login@domain.com</li>
+                    <li>Максимальная длина 40 символов</li>
+                    <li>Обязательно к заполнению</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Пустое поле</li>
+                <li class="fragment">Пробелы</li>
+                <li class="fragment">Не email</li>
+                <li class="fragment">> 40 символов</li>
+            </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h2>Нашли Дефект!</h2>
+        <p class="fragment">Регистрация проходит без заполнения email.</p>
+    </section>
+
+    <section>
+        <h1>Что делаем?</h1>
+        <p class="fragment">
+            Это баг?
+        </p>
+        <p class="fragment">
+            Воспроизводится?
+        </p>
+        <p class="fragment">
+            Известно ли о проблеме?
+        </p>
+
+        <p class="fragment">
+            Сообщаем миру :)
+        </p>
+    </section>
+
+    <section data-background-size='contain' data-background = "bug.png">
+    </section>
+
+    <section>
+        <h1>Поле ввода "Возраст"</h1>
+        <img src="age.png">
+        <p class = "fragment" align="left">Требования:</p>
+        <p class = "fragment" align="left">1. Диапазон значений от 18 до 160</p>
+        <p class = "fragment" align="left">2. Принимает только числовые значения.</p>
+        <p class = "fragment" align="left">2. Обязательно к заполнению</p>
+    </section>
+
+    <section>
+        <h2>Позитивные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Диапазон значений от 18 до 160</li>
+                    <li>Принимает только числовые значения</li>
+                    <li>Обязательно к заполнению</li>
+                </ol>
+            </td><td>
+                <ul>
+                <li class="fragment">Приграничные значения (17, 159)</li>
+                <li class="fragment">Значения на границах (18, 160)</li>
+            </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h2>Негативные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Диапазон значений от 18 до 160</li>
+                    <li>Принимает только числовые значения</li>
+                    <li>Обязательно к заполнению</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Буквы</li>
+                <li class="fragment">Спецсимволы</li>
+                <li class="fragment">Пустое поле</li>
+                <li class="fragment">Пробелы</li>
+                <li class="fragment"> < 18 </li>
+                <li class="fragment"> > 160 </li>
+            </ul></td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h1>Форма загрузки</h1>
+        <img src="upload2.png">
+        <p class = "fragment" align="left">Требования:</p>
+        <p class = "fragment" align="left">1. Только указанные форматы (zip,rar,jpeg)</p>
+        <p class = "fragment" align="left">2. Размер файла от 1 MB, до 40 MB.</p>
+        <p class = "fragment" align="left">3. Обязательно к заполнению</p>
+    </section>
+
+    <section>
+        <h2>Позитивные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Только указанные форматы (zip,rar,jpeg)</li>
+                    <li>Обязательно к заполнению</li>
+                </ol>
+            </td><td>
+                <ul>
+                    <li class="fragment">Загрузка допустимых форматов</li>
+                    <li class="fragment">Размер файла = 1MB</li>
+                    <li class="fragment">Размер файла = 40MB</li>
+                    <li class="fragment">Размер файла = 37MB</li>
+                </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h2>Негативные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Только указанные форматы (zip,rar,jpeg)</li>
+                    <li>Обязательно к заполнению</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment">Недопустимые форматы</li>
+                <li class="fragment"> < 1 MB</li>
+                <li class="fragment"> > 40 MB </li>
+                <li class="fragment"> Ничего не загружать </li>
+            </ul></td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Поле ввода "О себе"</h2>
+        <img src="about.png">
+        <p class = "fragment" align="left">Требования:</p>
+        <p class = "fragment" align="left">1. Вмещает 240 символов</p>
+        <p class = "fragment" align="left">2. Не обязательно к заполнению</p>
+    </section>
+
+
+
+    <section>
+        <h2>Позитивные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Вмещает 240 символов</li>
+                    <li>Не обязательно к заполнению</li>
+                </ol>
+            </td><td>
+                <ul>
+                    <li class="fragment"> <= 240 символов </li>
+                    <li class="fragment"> Регистрация успешно проходит без заполнения поля</li>
+                </ul></td></tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Негативные проверки</h2>
+        <table>
+            <tr><td>
+                <ol>
+                    <li>Вмещает 240 символов</li>
+                    <li> Не обязательно к заполнению</li>
+                </ol>
+            </td><td><ul>
+                <li class="fragment"> > 240 символов</li>
+                <li class="fragment"> Длинный текст без пробелов</li>
+                <li class="fragment"> Очень большой текст</li>
+                <li class="fragment"> Перетащить в форму загрузки картинку</li>
+                <li class="fragment"> Поресайзить форму</li>
+            </ul></td></tr> <!--ряд с ячейками тела таблицы-->
+        </table>
+    </section>
+
+    <section>
+        <h1>Можно ли как-то улучшить?</h1>
+        <img src="about.png">
+    </section>
+
+    <section data-background-size='contain' data-background = "improve.png">
+    </section>
+
+
+    <section>
+        <h1>Подтверждение</h1>
+        <img src="submit.png">
+        <p align="left">Требования:</p>
+        <p align="left">1. Обязательно к заполнению</p>
+    </section>
+
+    <section>
+        <h1>Доработка формы</h1>
+        <img src="fix.jpg">
+    </section>
+
+    <section data-background-size="contain" data-background = "404.png">
+    </section>
+
+
+    <section>
+        <h2>Заключительная часть</h2>
+        <p class="fragment">Тестирование - анализ продукта на соответствие требованиям</p>
+        <p class="fragment">Важно анализировать требования</p>
+    </section>
+
+    <section>
+        <h2>Вопросы?</h2>
+    </section>
+
+    <section>
+        <h3> Домашняя работа </h3>
+        <p> <a href = "http://testingchallenges.thetestingmap.org/index.php">Найти все варианты проверок поля First Name</a></p>
+        <img data-src="media/сhallenges.png">
+        http://testingchallenges.thetestingmap.org/index.php
+    </section>
+
+    <section>
+        <h3> Литература </h3>
+        <p align="left"> <a href="http://www.protesting.ru/testing/testdesign.html">Про Тест Дизайн</a></p>
+        <p align="left"> <a href="http://www.software-testing.ru/library/testing/test-analysis/2500-roles-and-">Техники Тест Дизайна</a></p>
+        <p align="left"> <a href="http://sitechco.ru/2012/08/chto-takoe-chit-listy/">Чит листы</a></p>
+        <p align="left"> <a href="http://natalyarukol.ru/2015/02/03/ispolzuem-maynd-kartyi-pravilno/">Как строить интеллектуальные карты</a></p>
+        <p align="left"> <a href="http://www.software-testing.ru/component/content/article/1238-number-string-subdomains">Классы эквивалентности. Баранцев А.</a></p>
+        <p align="left"> <a href="https://vimeo.com/42284184">Переходя все границы. Баранцев А.</a></p>
+
+
+
+
+
+
+    </section>
+
+</div></div>
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: 'js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>
