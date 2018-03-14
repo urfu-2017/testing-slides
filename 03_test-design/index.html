@@ -156,7 +156,7 @@
         <h3>Идеи для проверок полей ввода</h3>
         <ul class="fragment">
             <li> ограничения на длину поля (не больше 9) </li>
-            <li> ограничения на вводимые символов (“,%@, abc) </li>
+            <li> ограничения на вводимые символы (“,%@, abc) </li>
             <li> ограничения на положение символов (твит c #) </li>
             <li> валидность по типу поля (32 мая) </li>
             <li> обязательность/пустое поле </li>
@@ -203,7 +203,11 @@
     <section>
         <h3>Диаграмма состояний</h3>
         <img  data-src="media/diagramS.jpg">
+	    
     </section>
+	<section data-background-size='contain' data-background = "media/diagramS.jpg">
+    </section>
+	
 
     <section>
         <h3>Диаграмма состояний</h3>
@@ -329,7 +333,7 @@
             <li> Классы эквивалентности и анализ граничных значений</li>
             <li> Попарное тестирование </li>
             <li> Диаграмма состояний и матрица переходов</li>
-            <li> Приемы: 4 действия, причина-следтсвие, "не" и приедугадывание </li>
+            <li> Приемы: 4 действия, причина-следтсвие, "не" и предугадывание </li>
         </ul>
     </section>
 
@@ -468,7 +472,7 @@
                 <ol>
                     <li>Принимает только буквенные значения</li>
                     <li>Длина от 2 до 30 символов.</li>
-                    <li>Обязательно к заполнению.</li>
+                    <li>Обязательное поле.</li>
                 </ol>
             </td><td><ul>
                 <li class="fragment">Значение внутри диапазона, например "Олег"</li>
@@ -486,7 +490,7 @@
                 <ol>
                     <li>Принимает буквенные значения</li>
                     <li>Длина от 2 до 30 символов.</li>
-                    <li>Обязательно к заполнению.</li>
+                    <li>Обязательное поле.</li>
                 </ol>
             </td><td><ul>
                 <li class="fragment">Пустое поле</li>
@@ -501,14 +505,14 @@
     <section>
         <small>
         <h1>Позитивный тест кейс</h1>
-        <p class = "fragment" align="left">Проверим, как форма реагирует на простое Имя.</p>
+        <p class = "fragment" align="left">Проверим, как форма реагирует на простое Имя</p>
         <p class = "fragment" align="left">ID: Name1</p>
         <p class = "fragment" align="left">Название: Регистрация с валидным значением в поле "Имя"</p>
-        <p class = "fragment" align="left">Предусловие: Перейти на страницу регистрации. Все обязательные поля, кроме поля "Имя" необходимо заполнить валидными данными.</p>
+        <p class = "fragment" align="left">Предусловие: Перейти на страницу регистрации. Все обязательные поля, кроме поля "Имя", необходимо заполнить валидными данными</p>
         <p class = "fragment" align="left">Шаги:</p>
         <p class = "fragment" align="left">1. В поле "Имя" ввести "Пётр"</p>
         <p class = "fragment" align="left">2. Нажать "Отправить"</p>
-        <p class = "fragment" align="left">Ожидаемый результат: Сообщение об успешной регистрации, с отбивкой на почту.</p>
+        <p class = "fragment" align="left">Ожидаемый результат: Сообщение об успешной регистрации, с отбивкой на почту</p>
         </small>
     </section>
 
@@ -518,7 +522,7 @@
         <p class = "fragment" align="left">Проверим, как форма реагирует на числа</p>
         <p class = "fragment" align="left">ID: Name2</p>
         <p class = "fragment" align="left">Название: Регистрация с цифрами в поле "Имя"</p>
-        <p class = "fragment" align="left">Предусловие: Перейти на страницу регистрации. Все обязательные поля, кроме поля "Имя" необходимо заполнить валидными данными.</p>
+        <p class = "fragment" align="left">Предусловие: Перейти на страницу регистрации. Все обязательные поля, кроме поля "Имя", необходимо заполнить валидными данными</p>
         <p class = "fragment" align="left">Шаги:</p>
         <p class = "fragment" align="left">1. В поле "Имя" ввести 1234567884</p>
         <p class = "fragment" align="left">2. Нажать "Отправить"</p>
@@ -531,7 +535,7 @@
         <h2>Поле ввода "Email"</h2>
         <img src="email.png">
         <p class = "fragment" align="left">Требования:</p>
-        <p class = "fragment" align="left">2. Поле проверяет, что бы email был формата login@domain.com</p>
+        <p class = "fragment" align="left">2. Поле проверяет, чтобы email был формата login@domain.tld</p>
         <p class = "fragment" align="left">3. Максимальная длина 40 символов</p>
         <p class = "fragment" align="left">4. Обязательно к заполнению</p>
     </section>
@@ -541,7 +545,7 @@
         <table>
             <tr><td>
                 <ol>
-                    <li>Поле проверяет, что бы email был формата login@domain.com</li>
+                    <li>Поле проверяет, чтобы email был формата login@domain.tld</li>
                     <li>Максимальная длина 40 символов</li>
                     <li>Обязательно к заполнению</li>
                 </ol>
@@ -556,7 +560,7 @@
         <table>
             <tr><td>
                 <ol>
-                    <li>Поле проверяет, что бы email был формата login@domain.com</li>
+                    <li>Поле проверяет, чтобы email был формата login@domain.tld</li>
                     <li>Максимальная длина 40 символов</li>
                     <li>Обязательно к заполнению</li>
                 </ol>
@@ -599,8 +603,8 @@
         <img src="age.png">
         <p class = "fragment" align="left">Требования:</p>
         <p class = "fragment" align="left">1. Диапазон значений от 18 до 160</p>
-        <p class = "fragment" align="left">2. Принимает только числовые значения.</p>
-        <p class = "fragment" align="left">2. Обязательно к заполнению</p>
+        <p class = "fragment" align="left">2. Принимает только числовые значения</p>
+        <p class = "fragment" align="left">3. Обязательно к заполнению</p>
     </section>
 
     <section>
@@ -645,7 +649,7 @@
         <img src="upload2.png">
         <p class = "fragment" align="left">Требования:</p>
         <p class = "fragment" align="left">1. Только указанные форматы (zip,rar,jpeg)</p>
-        <p class = "fragment" align="left">2. Размер файла от 1 MB, до 40 MB.</p>
+        <p class = "fragment" align="left">2. Размер файла от 1 MB до 40 MB.</p>
         <p class = "fragment" align="left">3. Обязательно к заполнению</p>
     </section>
 
