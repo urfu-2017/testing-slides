@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png">
+
+    <title>Тестовая документация. Требования</title>
+
+    <meta name="description" content="Краткое описание презентации">
+    <meta name="author" content="Имя автора">
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/white.css">
+    <link rel="stylesheet" href="css/user.css">
+	<link rel="stylesheet" href="css/tomorrow.css">
+</head>
+<body>
+<div class="reveal"><div class="slides">
+
+<section>
+    <h1>Тестовая документация. Требования</h1>
+    <p class="author">Селиверстова Наталия</p>
+</section>
+
+<!-- Добавлять новые слайды сюда -->
+<section>
+    <h3>Часть 1. Тестовая документация</h3>
+    <img  data-src="media/testDoc.png">
+</section>
+
+<section>
+    <h3>Тестовая документация</h3>
+    <ol class="fragment">  
+        <li>До тестирования : Тест-кейс, Чек-лист, Тест-план</li>
+        <li>После тестирования: Отчет </li>
+    </ol>
+</section>
+
+<section>
+    <h3>Тест-кейс</h3>
+    <p class="fragment">Тест-кейс - одна конкретная проверка</p>
+     <ol class="fragment">  
+        <li>Есть шаги</li>
+        <li>Есть ожидаемый результат</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Плюсы и минусы тест-кейсов</h3>
+        <p class="fragment"> <font color="green">Плюсы</font>: однозначные, подробные, понятные</p> 
+        <p class="fragment"> <font color="red">Минусы</font>: сложно поддерживать, эффект пестицида</p> 
+</section>
+
+<section>
+    <h3>Эффект пестицида</h3>
+    <img  data-src="media/pestizid.png">  
+</section>
+
+ <section>
+    <h3>Эффект пестицида</h3>
+    <p class="fragment">Применение одних тех же тестов и методов приводит к тому, что в программе остаются дефекты, против которых эти методы неэффективны.</p>  
+</section>
+
+<section>
+    <h3>Как избежать эффекта пестицида?</h3> 
+      <ol class="fragment">  
+        <li>Меняться задачами в группе тестирования.</li>
+        <li>Тестировать в парах</li>
+        <li>Обсуждение идей для проверок</li>
+        <li>Тест-ревью</li>
+        <li>Читать чужие дефекты</li>
+        <li>Пробовать новые подходы, читать статьи</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Ресурс по тестированию ПО</h3>
+      <p class="fragment"> software-testing.ru </p>
+      <img class="fragment" data-src="media/ST.png">  
+</section>
+
+<section>
+    <h3>В каких случаях используют ТК?</h3>
+     <ol class="fragment">  
+        <li>Регрессионное тестирование</li>
+        <li>Нужно проверить что-то очень важное</li>
+        <li>Прогонять ТК будет кто-то малознакомый с системой </li>
+        <li>Для написания автотестов</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Чек-лист</h3>
+        <p class="fragment">список проверок без деталей</p>
+        <img width="550" data-src="media/checkList.jpg">  
+</section>
+
+<section>
+    <h3>Чек-лист</h3>
+    <ol class="fragment">  
+        <li>Описывает, что теструем, но не описывает, как</li>
+        <li>Может быть разного уровня детализации</li>
+        <li>Проверки в списке могут быть без ожидаемого результата</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Пример чек-листа</h3>
+        <p class="fragment">Блок истории просмотров</p>
+        <img data-src="media/history.png">  
+</section>
+
+<section data-background="media/history.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Декомпозировали</h3>
+     <ol class="fragment">  
+        <li>Список и прокрутка</li>
+        <li>Карточка товара</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Чек-лист истории просмотров</h3>
+    <h4>1. Список и прокрутка</h4>
+    <table>
+        <tbody>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Проверка</th>
+                <th>Результат</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>1</td>
+                <td>Пустая история</td>               
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Первый элемент</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>1 страница (4 элемента)</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2 страницы (5 элементов)</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Несколько страниц</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Отображение стрелок прокрутки</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+ 
+<section> 
+    <h3>Чек-лист истории просмотров</h3>
+    <h4>2. Карточка товара</h4>
+    <table>
+        <tbody>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Проверка</th>
+                <th>Результат</th>
+            </tr>
+        </thead>
+           <tr>
+                <td>7</td>
+                <td>Изображение есть</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Изображения нет</td> 
+            </tr>
+            <tr> 
+                <td>9</td>
+                <td>Название короткое</td>
+            </tr>
+             <tr> 
+                <td>10</td>
+                <td>Название длинное</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Ссылка в названии</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Цена товара с валютой</td>
+            </tr>
+            </tbody>
+    </table>
+</section>
+
+<section>
+    <h3>Еще пример чек-листа</h3> 
+    <img  data-src="media/check2.jpg">
+</section>
+
+<section data-background="media/NewForm.png"
+ data-background-size="contain">  
+</section>
+
+<section data-background="media/check2.jpg"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Где хранят чек-листы?</h3>
+     <ol class="fragment">  
+        <li>в таблицах</li>
+        <li>в специально предназначенной системе</li>
+        <li>в корпоративной wiki</li>
+        <li>в mindMap схемах</li>
+    </ol> 
+</section>
+
+<section>
+    <h3>MindMap как тестовая документация</h3>
+    <img  data-src="media/сheckoutAll.png">
+</section>
+
+<section>
+    <h3>MindMap как тестовая документация</h3>
+    <img  data-src="media/сheckoutB.png">
+</section>
+
+<section data-background="media/сheckoutB.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Минусы чек-листа</h3>
+     <ol class="fragment">  
+        <li>Не отражает в полной мере что и как проверялось</li>
+        <li>Не подходят для обучения и для джуниоров</li>
+    </ol>
+</section>
+
+ <section>
+    <h3>Плюсы чек-листа</h3>
+    <ol class="fragment">
+        <li>Важные проверки не будут пропущены</li>  
+        <li>Меньше рутины и затрат на поддержку документации</li>
+        <li>Уменьшает эффект пестицида, расширяет покрытие</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Тест-план</h3>
+    <p class="fragment">Документ, описывающий весь объем работ по тестированию</p>
+    <p class="fragment">Другими словами: список проверок + сроки, риски, ресурсы, методы и тд</p>
+</section>
+
+<section>
+    <h3>Тест-план</h3>
+    <ol class="fragment">
+        <li>Что и где тестируем?</li>  
+        <li>Как тестируем?</li>
+        <li>Когда тестируем?</li>
+    </ol> 
+</section>
+
+<section>
+    <h3>Что и где тестируем?</h3>
+    <ol class="fragment">
+        <li>Описание системы/приложения и ее функций</li>  
+        <li>Декомпозированный список проверок для функций</li>
+        <li>Какие тестовые среды используем</li>
+        <li>Что тестирует, а что НЕ тестируем</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Как тестируем?</h3>
+    <ol class="fragment">
+        <li>Какие области наиболее приоритетны</li>  
+        <li>Инструменты и среды тестирования</li>
+        <li>Какие виды тестирования используем</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Когда тестируем?</h3>
+    <ol class="fragment">
+        <li>Сколько у нас ресурсов</li>  
+        <li>Когда начать и когда закончить тестирование</li>
+        <li>Последовательность проведения работ</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Пример тест-плана</h3>
+    <img src="media/plan.png"> 
+</section>
+
+<section data-background="media/plan.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Пример тест-плана</h3>
+    <img src="media/plan3.png"> 
+</section>
+
+<section data-background="media/plan3.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Пример тест-плана</h3>
+    <img src="media/plan2.png"> 
+</section>
+
+<section data-background="media/plan2.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Когда нужен тест-план?</h3>
+    <ol class="fragment">
+        <li>Нужно четко договориться о целях и стратегии тестирования</li>  
+        <li>Есть распределенная команда и нужно разделить работу</li>
+        <li>Обосновать ресурсы и сроки заказчику</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Итог</h3>
+    <p class="fragment">Тест-кейс - одна конкретная проверка</p>
+    <p class="fragment">Чек-лист - список проверок без подробностей</p>
+    <p class="fragment">Тест-план - список проверок + сроки, ресурсы, методы</p>
+</section>
+
+<section>
+    <h3>Когда используем какую документацию?</h3>
+    <table>
+        <tbody>
+        <thead>
+            <tr>
+                <th>Что</th>
+                <th>Когда</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>Тест-<nobr>кейс</td>
+                <td>Для регресса или проверки очень важного</td>
+            </tr>
+           <tr>
+                <td>Чек-<nobr>лист</td>
+                <td>Почти всегда</td>
+            </tr>
+            <tr>
+                <td>Тест-<nobr>план</td>
+                <td>Нужны точные задокументированные договоренности</td>
+            </tr>
+            </tbody>
+    </table>
+</section>
+
+<section>
+    <h3>Тестовая документация</h3>
+    <ol class="fragment">  
+        <li>До тестирования : Тест-кейс, Чек-лист, Тест-план</li>
+        <li>После тестирования: Отчет </li>
+    </ol>
+</section>
+
+<section>
+    <h3>Отчет</h3>
+   <p class="fragment">Получается из тест-плана, чек-листов и наборов тест-кейсов</p>
+</section>
+
+<section>
+    <h3>Отчет</h3>
+    <ol class="fragment">
+        <li>Что проверили</li>  
+        <li>Дефекты / "ок"</li>
+        <li>Сколько времени потратили</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Чек-лист истории просмотров</h3>
+   <h4> Список и прокрутка</h4>
+    <table>
+        <tbody>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Проверка</th>
+                <th>Результат</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>1</td>
+                <td>Пустая история</td> 
+                <td><font color="green">ок</td>               
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Первый элемент</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>4 элемента</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td> 5 элементов</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Несколько страниц</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>Отображение стрелок прокрутки</td>
+                <td><font color="green">ок</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+ 
+<section> 
+    <h3>Чек-лист истории просмотров</h3>
+    <h4> Карточка товара </h4>
+    <table>
+        <tbody>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Проверка</th>
+                <th>Результат</th>
+            </tr>
+        </thead>
+           <tr>
+                <td>7</td>
+                <td>Изображение есть</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>Изображения нет</td>
+                <td><font color="red"> <u>bug-1</u></td> 
+            </tr>
+            <tr> 
+                <td>9</td>
+                <td>Название короткое</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr> 
+                <td>10</td>
+                <td>Название длинное</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>Ссылка в названии</td>
+                <td><font color="green">ок</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>Цена товара с валютой</td>
+                <td><font color="green">ок</td>
+            </tr>
+            </tbody>
+    </table>
+</section>
+
+<section>
+    <h3>MindMap как тестовая документация</h3>
+    <img  data-src="media/сheckoutA.png">
+</section>
+
+<section data-background="media/сheckoutA.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>Документация после тестирования: что еще?</h3>
+     <ol class="fragment">
+        <li>комментарий в тикете</li>  
+        <li>апрув релиза</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Документация после тестирования</h3>
+    <p class="fragment">Зачем?</p>
+    <p class="fragment">Сообщить о результатах тестирования</p>
+</section>
+
+<section>
+    <h3>Цель тестирования</h3>
+    <p class="fragment">Предоставить обратную связь о состоянии продукта</p>
+</section>
+
+<section>
+    <h3>Результат тестирования</h3>
+    <p class="fragment">"Все ок" или список дефектов/улучшений - это тоже результат тестирования</p>
+    <p class="fragment">Но вспомнишь ли ты потом, что проверял?</p>
+    <p class="fragment">А поможет ли это составить полную картину проведенных тестов?</p>
+    <p class="fragment">Точно ли такой обратной связи достаточно?</p>
+</section>
+
+<section>
+    <h3>Результат тестирования</h3>
+    <p class="fragment">Нужно хотя бы иметь список того, что проверял</p>
+</section>
+
+<section>
+    <h3>Исследовательское тестирование</h3>
+    <p class="fragment">Не предусматривается в тест-плане</p>
+    <p class="fragment">Одновременно и техника, и вид тестирования</p> 
+    <img  data-src="media/holms.jpg"> 
+</section>
+
+<section>
+    <h3>Исследовательское тестирование</h3>
+      <ol class="fragment">
+        <li>Разработка и выполнение тестов в одно и то же время</li>  
+        <li>Тесты изменяются во время выполнения</li>
+        <li>Следующий тест выбирается по результатам предыдущего</li>
+        <li>Одновременно происходит изучение тестируемой системы</li>
+    </ol> 
+</section>
+
+<section>
+    <h3>Исследовательское тестирование</h3>
+    <p class="fragment"><font color="green">Плюсы</font>: Можно найти новые дефекты; изучить продукт; уточнить существующие тесты</p>
+    <p class="fragment"><font color="red">Минусы</font>: Непонятно, как планировать; не всегда подойдет для джуниоров</p>  
+</section>
+
+<section>
+    <h3>Когда применять</h3>
+      <ol class="fragment">
+        <li>При изучении нового</li>  
+        <li>На ранних этапах разработки</li>
+        <li>Для расширения/разнообразия тестов из плана</li>
+    </ol> 
+</section>
+
+
+
+
+<section>
+    <h3>Часть 2. Требования к ПО</h3>
+     <ul class="fragment">
+        <li>2.1 Требования и ожидаемый результат</li> 
+        <li>2.2 Как тестировать требования</li> 
+    </ul>
+</section>
+
+<section>
+    <h3>2.1 Требования и ожидаемый результат</h3>
+     <img  data-src="media/expect.png"> 
+</section>
+
+<section>
+    <h3>Тестирование</h3>
+    <p class="fragment">Проверка соответствия программы требованиям</p>
+</section>
+
+<section>
+    <h3>Требования</h3> 
+    <p class="fragment"> Или ТЗ, документация, спецификация - это описание того, как система должна работать</p> 
+</section>
+
+<section>
+    <h3>Пример: wiki-разметка</h3>
+    <p class="fragment"> ((https://ya.ru/ Яндекс))</p>
+    <img class="fragment" width="100" data-src="media/strela.jpg">
+    <p class="fragment"><u>Яндекс</u></p> 
+</section>
+
+<section>
+    <h3>Пример</h3>
+    <p class="fragment">То же самое, но в виде двух полей для редактирования</p> 
+    <p class="fragment">Название указывать не обязательно, оно для удобства</p> 
+    <img  class="fragment" data-src="media/giperEdit.png"> <br>
+    <img class="fragment" width="100" data-src="media/strela.jpg"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <img class="fragment" width="100" data-src="media/strela.jpg"> 
+    <p class="fragment"> Яндекс &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; https://ya.ru/</p>
+</section>
+
+<section>
+    <h3>Пример: После сохранения</h3>
+    <p class="fragment">Значения в поле "Источник" - ссылки</p>
+    <img  data-src="media/giper.png">
+</section>
+
+<section data-background="media/giper.png"
+ data-background-size="contain">  
+</section>
+
+<section>
+    <h3>ТЗ: Поиск по гиперссылке</h3>
+    <p class="fragment">Поиск осуществляется как по названию так и по значению гиперссылки. Критерием заполненности условия фильтрации считается заполнение хотя бы одного из полей.</p>  
+</section>
+
+<section>
+    <h3>Тестовые данные</h3>
+    <table>
+        <tbody>
+        <thead>
+            <tr>
+                <th> </th>
+                <th>Название ссылки</th>
+                <th>Значение ссылки</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>1</td>
+                <td>Яндекс</td>
+                <td>https://ya.ru</td>
+            </tr>
+           <tr>
+                <td>2</td>
+                <td>Яндекс</td>
+                <td>https://google.com</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td></td>
+                <td>https://ya.ru</td> 
+            </tr>
+            </tbody>
+    </table> 
+</section>
+
+<section>
+    <h3>Обнаружилось</h3>
+    <p class="fragment">При поиске по значению https://ya.ru - только один результат.</p>
+    <table class="fragment">
+          <thead>
+            <tr>
+                <th> </th>
+                <th>Название ссылки</th>
+                <th>Значение ссылки</th>
+            </tr>
+        </thead>
+        <tr>
+            <td>3</td>
+            <td></td>
+            <td>https://ya.ru</td> 
+        </tr>
+            </tbody>
+    </table>
+    <p class="fragment">Потому что в требовании было написано: "Поиск как по значению, так и по названию"</p>
+</section> 
+
+<section>
+    <h4>Программа, соответствущая плохому ТЗ, непригодна</h4>
+</section>
+
+<section>
+    <h3>А бывает наоборот</h3>
+    <img  data-src="media/featureBug.jpg"> 
+</section>
+
+<section>
+    <h4>Расхождение между программой и ее спецификацией считается ошибкой тогда, и только тогда, когда спецификация существует и она правильна.</h4>
+    <p class="fragment">Правильность работы программы нельзя доказать логически.</p> 
+</section>
+
+<section>
+    <h3>Отсюда следует</h3>
+    <p class="fragment"><span class="fragment highlight-red">Чтобы хорошо протестировать программу, недостаточно сравнить реализацию с ТЗ</span>, потому что:</p>  
+    <ol class="fragment">
+        <li>ТЗ может быть неправильным </li> 
+        <li>ТЗ вообще может не быть </li>
+        <li>Требования могут быть неявные</li> 
+    </ol> 
+</section>
+
+<section>
+    <h3>Явные требования</h3> 
+    <p class="fragment"> Требования, которые явным образом описаны в ТЗ, спецификации</p>
+    <h3>Неявные требования</h3> 
+    <p class="fragment">Не описаны явным образом в ТЗ, но подчиняются жизненным реалиям, законам математики/физики и тд, и зависят от явных требований</p>
+</section>
+
+<section>
+    <h4>Явное требование</h4> 
+    <p class="fragment">Поле "Адрес доставки" являетяс обязательным. Покупатель с него может ввести Города, Улицы и дома</p>
+    <h4>Неявное требование</h4> 
+    <p class="fragment">Не во всех городах есть улицы (Зеленоград), а иногда нужно ввести еще район</p>
+</section>
+
+<section>
+    <h3>Тестовые оракулы </h3>
+    <img data-src="media/oracles.png">  
+</section>
+
+<section>
+    <h3>Тестовые оракулы </h3>
+    <p class="fragment"> Способ распознавания правильного и неправильного поведения продукта</p> 
+    <p class="fragment"> или</p> 
+    <p class="fragment"> Способ генерации ожидаемого результата теста</p>  
+</section>
+
+<section>
+    <h3>History</h3>
+    <h4>История</h4>
+    <p class="fragment">Сравнить с предыдущей версией</p>    
+</section>
+
+<section>
+    <h3>Image</h3>
+    <h4>Имидж, бренж</h4>
+    <p class="fragment">Система соответствует имиджу организации, ее бренду или репутации.</p>    
+</section>
+
+<section>
+    <h3>Comparable products</h3>
+    <h4>Похожие продукты</h4>
+    <p class="fragment">Сравнить с похожими продукатами/услугами/системами</p>    
+</section>
+
+<section>
+    <h3>Claims</h3>
+    <h4>Требования</h4>
+    <p class="fragment">Соответствует требованиям, как зафиксированным в докуметации/ТЗ, так и обсужденным на встречах</p>    
+</section>
+
+<section>
+    <h3>Users expectations</h3>
+    <h4>Ожидания пользователей</h4>
+    <p class="fragment">Система соответствует ожиданиям пользователей</p>    
+</section>
+
+<section>
+    <h3>Product</h3>
+    <h4>Продукт / Внутренняя согласованность</h4>
+    <p class="fragment">Каждый элемент системы (или продукта) будет работать по тому же принципу, что и другие сопоставимые элементам в той же системе.</p>    
+</section>
+
+<section>
+    <h3>Purpose</h3>
+    <h4>Предназначение</h4>
+    <p class="fragment">Система выполняет функции, для которых она предназначена.</p>    
+</section>
+
+<section>
+    <h3>Standarts, statutes</h3>
+    <h4>Стандарты и законы</h4>
+    <p class="fragment">Система соответствует законам или стандартам, которые имеют отношение к продукту.</p>    
+</section>
+
+<section>
+    <h3>Familar problems</h3>
+    <h4>Схожие проблемы</h4>
+    <p class="fragment">Нет проблем похоижих на те, с которыми мы уже сталкивались</p>    
+</section>
+
+<section>
+    <h3>Explainability</h3>
+    <h4>Объяснимость</h4>
+    <p class="fragment">Поведение системы объяснимо</p>    
+</section>
+
+<section>
+    <h3>World</h3>
+    <h4>Мир</h4>
+    <p class="fragment">Система соответствует представлениям о мире</p>    
+</section>
+
+<section>
+    <h3>Тестовые оракулы </h3>
+    <ol class="fragment">
+        <li>history</li> 
+        <li>image</li>  
+        <li>comparable products</li>
+        <li>claims</li>
+        <li>users expectations</li>
+        <li>product</li>
+        <li>purpose</li> 
+        <li>standarts, statutes</li>  
+        <li>familar problems</li>
+        <li>explainability</li>
+        <li>world</li>
+    </ol>
+</section>
+
+<section>
+    <h3>Тестовые оракулы </h3>
+    <p class="fragment"> Программный код оракулом быть не может!</p>    
+</section>
+
+<section>
+    <h3>Требование и тест-кейс: чем отличаются?</h3>
+    <p class="fragment"> ТЗ описывает общие правила, а тестовый случай - это одна конкретная ситуация из множества, которые описаны в этом требовании</p>
+</section>
+
+<section>
+    <h3>Пример ТЗ</h3>
+    <p class="fragment">Для всех элементов добавления товара в корзину должен быть тултип с текстом “Положить товар в корзину” (товар не в корзине) и “перейти в корзину” (этот товар уже в корзине)</p> 
+</section>
+
+<section>
+    <h3>Пример проверки</h3>
+    <ol class="fragment">
+        <li>Открыть карточку товара, который уже в корзине</li> 
+        <li>Навести курсор на иконку "В корзине"</li>  
+        <li>Появился тултип с текстом "Перейти в корзину"</li>
+    </ol> 
+</section>
+
+
+ <section>
+    <h3>2.2 Тестирование требований</h3>  
+</section>
+
+<section>
+    <h3>Зачем?</h3>
+    <img data-src="media/bugs.png">   
+</section>
+
+<section>
+     <h3>Корректность</h3>
+     <p class="fragment">Требование не содержит фактических ошибок</p> 
+     <p class="fragment"> Плохой пример: После набора номера в ожидании соединения пользователь должен слышать короткие гудки </p>
+</section> 
+
+<section>
+     <h3>Однозначность</h3>
+     <p class="fragment">Требование нельзя понять двояко</p>  
+     <p class="fragment"> Плохой пример: Поиск осуществляется как по названию, так и по значению гиперссылки</p> 
+</section> 
+
+<section>
+     <h3>Полнота</h3>
+     <p class="fragment">Требование содержит исчерпывающую информация о том, что должна и делать система</p>  
+</section> 
+
+<section>
+     <h3>Совместимость</h3>
+     <p class="fragment">Требование не должно противоречить другим требованиям и ограничениям системы</p>
+     <p class="fragment"> Плохой пример: Система должна запрашивать из социальных сетей адрес электронной почты пользователя.</p>   
+</section> 
+
+<section>
+     <h3>Понятность</h3>
+     <p class="fragment">Требование должно быть понятно всей команде разработки и заказчику</p>  
+     <p class="fragment"> Плохой пример: Передатчик телефона должен использовать амплитудно-фазовую модуляцию с несущими от 2 до 7,5 МГц с шагом 500 кГц</p>
+</section> 
+
+<section>
+     <h3>Осуществимость</h3>
+     <p class="fragment">Требование можно реализовать с приемлимыми трудозатратами в рамках существующих технологий</p>   
+     <p class="fragment"> Пример: невозможно требовать от системы отклик в 1 миллисекунду при больших нагрузках</p>
+</section> 
+
+<section>
+     <h3>Проверяемость</h3>
+     <p class="fragment">Требование можно проверить</p> 
+     <p class="fragment"> Плохой пример: Система должна работать быстро</p>  
+</section> 
+
+<section>
+     <h3>Критерии качества требований</h3>
+     <ol class="fragment">
+        <li>Корректность</li>
+        <li>Однозначность </li> 
+        <li>Полнота</li>  
+        <li>Совместимость</li>
+        <li>Понятность</li>
+        <li>Осуществимость</li>
+        <li>Проверяемость</li>
+    </ol>   
+</section> 
+
+<section>
+     <h3>Как тестировать требования?</h3>
+     <ol class="fragment">
+        <li>Предварительное беглое чтение</li> 
+        <li>Техники тест-дизайна</li>  
+        <li>Тест-кейсы</li>
+        <li>Макеты и прототипы интерфейсов</li>
+        <li>Понимание предметной области</li>
+        <li>Знание уже реализованной части системы</li>
+    </ol>   
+</section> 
+
+<section>
+    <h3>Итог</h3> 
+</section>
+
+<section>
+    <h3>Тестирование - это</h3> 
+    <p class="fragment" align="left">проверка соответствия реального поведения программы ожидаемому,</p>
+    <p class="fragment" align="left">осуществляемая путем наблюдения за ее работой в специальных, искусственно созданных ситуациях,</p> 
+    <p class="fragment" align="left">выбранных определенным образом.</p> 
+</section>
+
+<section>
+    <h3>Тестирование - это</h3> 
+    <ul class="fragment">
+        <li>проверка соответствия реального поведения программы <font color="red">ожидаемому, </font></li> 
+        <li>  осуществляемая путем наблюдения за ее работой в специальных, искусственно созданных ситуациях,</li> 
+        <li>выбранных определенным образом.</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Тестирование - это</h3> 
+    <ul class="fragment">
+        <li>проверка соответствия реального поведения программы ожидаемому, </li> 
+        <li>  осуществляемая путем <font color="red">наблюдения за ее работой</font> в специальных, искусственно созданных ситуациях,</li> 
+        <li>выбранных определенным образом.</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Тестирование - это</h3> 
+    <ul class="fragment">
+        <li>проверка соответствия реального поведения программы ожидаемому,</li> 
+        <li> осуществляемая путем наблюдения за ее работой в <font color="red">специальных, искусственно созданных ситуациях</font>,</li> 
+        <li>выбранных определенным образом.</li>
+    </ul>
+</section>
+
+<section>
+    <h3>Тестирование - это</h3> 
+    <ul class="fragment">
+        <li>проверка соответствия реального поведения программы ожидаемому,</li> 
+        <li>осуществляемая путем наблюдения за ее работой в специальных, искусственно созданных ситуациях,</li> 
+        <li><font color="red">выбранных определенным образом.</font></li>
+    </ul>
+</section>
+
+<section>
+    <h3>Спасибо. Вопросы?</h3>
+    <img width="750" data-src="media/cat.jpg">
+</section>
+
+<section>
+    <h3>Спасибо. Вопросы?</h3>
+    <img width="750" data-src="media/cat.jpg">
+</section>
+
+<section>
+    <h3>Домашнее задание</h3>
+    <h4> MindMap для чата Ki1ogram</h4>
+    <ul class="fragment">
+        <li>Требований нет</li> 
+        <li>Готового продукта еще нет</li> 
+    </ul>
+    <p class="fragment">Задача: подготовиться к предстоященму тетсированию. Составить схему, декомпозирующую продукт для предстоящего тестирования</p>
+</section>
+
+<section>
+    <h3>Литература</h3>
+      <ul class="fragment">
+        <li> <a href="http://www.developsense.com/blog/2012/07/few-hiccupps/">Oracles</a></li> 
+        <li> <a href="http://okiseleva.blogspot.ru/2015/01/blog-post_64.html"> Исследовательские туры</a></li> 
+        <li> <a href="http://lib.mdpu.org.ua/e-book/vstup/L/Kalbertson.pdf">Быстрое тестирование, Калбертсон</a></li>
+        <li><a href="http://natalyarukol.ru/2015/02/03/ispolzuem-maynd-kartyi-pravilno/">Использование MindMap</a> </li>
+        <li><a href="http://www.software-testing.ru/library/testing/general-testing/2550-bad-requirements-software-testers-nightmare">Плохие требования - кошмар тестировщика</a> </li>
+    </ul>
+</section>
+
+
+</div></div>
+
+<script src="js/head.min.js"></script>
+<script src="js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: 'js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>

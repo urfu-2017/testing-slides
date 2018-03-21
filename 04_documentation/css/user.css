@@ -1,0 +1,66 @@
+.reveal .author {
+    text-align: center;
+}
+
+.reveal .author::first-letter,
+.reveal .red {
+    color: red;
+}
+
+.reveal section img {
+    border: none;
+    box-shadow: none;
+}
+
+@font-face {
+    font-family: sourcecodepro-light;
+    font-weight: 200;
+    src: local(textbook-bold);
+    src: url('../fonts/SourceCodePro-Light.ttf');
+}
+
+pre,
+.reveal pre code {
+    font-family: 'sourcecodepro-light', textbook, Arial;
+    max-height: none;
+    font-size: 1.5em;
+    line-height: 1.6em;
+}
+
+.reveal pre {
+    box-shadow: none;
+}
+
+.reveal .slide-number {
+    font-family: 'sourcecodepro-light', textbook-light, Arial;
+    font-size: .7em;
+    background-color: rgba(255, 255, 255, 0.75);;
+    color: black;
+    padding: 7px;
+    bottom: 20px;
+}
+
+.reveal .columns {
+    display: flex;
+}
+
+.reveal pre.size-L code {
+    font-size: 5em;
+    line-height: 6em;
+}
+
+
+.reveal pre.size-XS code {
+    font-size: 1.3em;
+    line-height: 1.4em;
+}
+
+.reveal pre.size-XXS code {
+    font-size: 1.1em;
+    line-height: 1.1em;
+}
+
+.reveal pre.size-XXXS code {
+    font-size: 0.5em;
+    line-height: 0.9em;
+}
