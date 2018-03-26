@@ -27,6 +27,6 @@
 
 Для создания MindMap схемы рекомендуем [XMind](http://www.xmind.net/)
 
-Прикрепи файл с решением к тикету в очереди <тут будет ссылка на очередь>
+Прикрепи файл с решением к тикету в очереди [Kilogramcheck](https://tracker.yandex.ru/KILOGRAMCHECK/order:updated:true/filter?resolution=empty())
 
 ![kilo jpg jpeg 800 x 400 2018-03-21 17-28-50](https://user-images.githubusercontent.com/37372173/37709876-8f8ce1ba-2d03-11e8-8bbd-4adfce8b9b75.png)
