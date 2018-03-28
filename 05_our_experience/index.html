@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="https://yastatic.net/iconostasis/_/8lFaTHLDzmsEZz-5XaQg9iTWZGE.png">
+
+    <title>Experience</title>
+
+    <meta name="description" content="Наш опыт ручного тестирования">
+    <meta name="author" content="Наталия Селиверстова, Анастасия Сергеева, Ирина Заневская, Сергей Жигалов">
+
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/white.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/tomorrow.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <!-- Селиверстова Наталия -->
+
+        <section>
+            <h2>Наш опыт ручного тестирования</h2>
+            <p class="author">Селиверстова Наталия</p>
+        </section>
+
+        <section>
+            <h3>1. Поиск</h3>
+            <img data-src="images/taffy/cats.jpg">
+        </section>
+
+        <section>
+            <h3>2. Обучение</h3>
+            <ol>
+                <li>С чего начать?</li>
+                <li>Метаинформация</li>
+                <li>Тестирование требований</li>
+            </ol>
+            <img data-src="images/taffy/kitty.jpg">
+        </section>
+
+        <section>
+            <h3>3. Коммуникации</h3>
+            <img data-src="images/taffy/utya.jpg">
+        </section>
+
+        <section>
+            <h3>4. Тестирование и время</h3>
+            <p class="fragment">Займы времени</p>
+            <img class="fragment" width="1200" data-src="images/taffy/zaim.png">
+        </section>
+
+        <section>
+            <h3>5. Тестирование и время</h3>
+            <p class="fragment">Зависимость от количества дефектов</p>
+            <table class="fragment">
+                <tbody>
+                <thead>
+                <tr>
+                    <th>Количество доработок</th>
+                    <th>Время</th>
+                </tr>
+                </thead>
+                <tr>
+                    <td>0 доработок, все ок</td>
+                    <td>4 часа</td>
+                </tr>
+                <tr>
+                    <td>1 баг</td>
+                    <td>4 часа 20 минут</td>
+                </tr>
+                <tr>
+                    <td>2 бага</td>
+                    <td>4 часа 50 минут</td>
+                </tr>
+                <tr>
+                    <td>было 2, но после их <br> исправления появился <br>новый баг...</td>
+                    <td>5 часов 20 минут</td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Спасибо!</h3>
+            <img class="fragment" width="420" data-src="images/taffy/90pro.jpg">
+        </section>
+
+        <!-- Сергеева Анастасия -->
+
+        <section>
+            <h2>История одного тестирования</h2>
+            <p class="author">Сергеева Анастасия</p>
+        </section>
+        <section>
+            <section>
+                <h2>Что должно было получиться?</h2>
+                <p>Фирма-заказчик для своих пользователей, зарегистрированных в системе, через приставку продает
+                    различные услуги.</p>
+            </section>
+
+
+            <section data-background="images/sergeeva-a/1.jpg" data-background-size='contain'>
+            </section>
+
+            <section>
+                <p>Приставка, СПП, ЛК, Фирма-поставщик - все эти разделы реализовывались абсолютно разными
+                    ИТ-фирмами.</p>
+                <br>
+                <p class="fragment">Банк-эквайринг и банк-эмитент предоставили свои готовые решения для оплаты</p>
+                <br>
+                <p class="fragment">Каждая фирма тестировала свою функциональность отдельно от всей системы</p>
+            </section>
+
+            <section data-background="images/sergeeva-a/1.jpg" data-background-size='contain'>
+            </section>
+
+            <section data-background="images/sergeeva-a/2.jpg" data-background-size='contain'
+                     style="text-shadow: 0 0 15px #fff;">
+            </section>
+            <section>
+                <p>Заглушка — это небольшая часть кода, которая заменяет собой другой компонент во время
+                    тестирования</p>
+            </section>
+
+            <section data-background="images/sergeeva-a/2.jpg" data-background-size='contain'
+                     style="text-shadow: 0 0 15px #fff;">
+            </section>
+
+            <section>
+                <p>Протестировали с заглушками? Тестируем с реальными системами!</p>
+            </section>
+
+            <section data-background="images/sergeeva-a/1.jpg" data-background-size='contain'
+                     style="text-shadow: 0 0 15px #fff;">
+                <p class="fragment">Тестирование банков отдельно не имело смысла</p>
+            </section>
+
+            <section>
+                <p>Все элементы отдельно и попарно проверены и работают. Что дальше?</p>
+                <p class="fragment">Смотрим как система работает в целом</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Как проходило интеграционное тестирование</h2>
+                <ul>
+                    <li class="fragment"><b>Тестировщики подготовили ПМИ </b> (Программа и методика испытаний) - набор
+                        тест-кейсов для показа функциональности заказчику
+                    </li>
+                    <li class="fragment"><b>Представители всех фирм встретились на ПСИ </b> (Приемо-сдаточные испытания)
+                        - процесс прогона ПМИ для показа функциональности заказчику
+                    </li>
+                    <li class="fragment"><b>Ответственный за прогон тестов человек проходил кейсы</b></li>
+                    <li class="fragment"><b>Тестировщики всех фирм сидели "на подхвате"</b></li>
+                </ul>
+            </section>
+
+            <SECTION>
+                <ul><b>Еще немного цифр</b>
+                    <li class="fragment">Вся работа над новой функцией шла 2 года</li>
+                    <li class="fragment">В сумме только на интеграционное тестирование мы потратили около 5 дней по
+                        10-12 часов
+                    </li>
+                </ul>
+                <small>
+                    <p class="fragment">По результатам тестирования было решено, что релизу быть</p>
+                    <p class="fragment">После выкатки релиза в прод заказчик проверил, что там всё хорошо</p>
+                </small>
+            </SECTION>
+
+            <section>
+                <h2>Итог первой недели работы</h2>
+                <p class="fragment">Заказчик недосчитался денег</p>
+                <h2 class="fragment">Каким образом?</h2>
+                <p class="fragment">Оплата за услугу проходила, услуга передавалась пользователю, а через 3 дня деньги
+                    возвращались на БК пользователя</p>
+                <h2 class="fragment">Почему так получилось?</h2>
+                <p class="fragment">Неизвестно до сих пор</p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Можно ли было этого избежать?</h2>
+                <ul>
+                    <li class="fragment"><b>Более глубокое и широкое знание предметной области </b> - мы могли знать как
+                        операции проходят в банке
+                    </li>
+                    <li class="fragment"><b>Предугадывание ошибок</b> - как следствие из предыдущего пункта</li>
+                    <li class="fragment"><b>Больше времени </b> - за "быстрое" тестирование в проде мы не поймали
+                        никаких долгосрочных дефектов
+                    </li>
+                    <li class="fragment"><b>Тестовые данные в проде</b> - поддержка такового дало бы возможность
+                        тестироваться полноценно и в проде
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Чему можно научиться?</h2>
+                <ul>
+                    <li class="fragment"><b>Узнавайте предметную область</b>, понимайте как проходят все процессы,
+                        связанные с функциональностью и предметной областью.
+                    </li>
+                    <li class="fragment"><b>Документация - не всё.</b> Многие процессы описаны во множестве статьях в
+                        интернете - читайте!
+                    </li>
+                    <li class="fragment"><b>Задавайте вопросы, смотрите шире</b> - ошибка может быть за пределами
+                        системы (её не протестировать, но о её возможном наличие можно предупредить).
+                    </li>
+                    <li class="fragment">Нельзя спускать ни один элемент системы на самотек. <b>Тестировать надо все и
+                        как в первый раз.</b></li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <h2>Конец.</h2>
+        </section>
+
+        <!-- Наталья Ушакова -->
+
+        <section>
+            <h2>Три истории</h2>
+
+            <p class="author">Ушакова Наталья</p>
+        </section>
+
+        <section>
+            <h2>как я пришла в тестирование</h2>
+        </section>
+
+        <section data-background="images/ushakova13/117.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section>
+            <h2>Конфликт интересов</h2>
+        </section>
+
+        <section data-background="images/ushakova13/111.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/ushakova13/110.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/ushakova13/118.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section>
+            <h2>когда разработчик расслабился</h2>
+        </section>
+
+        <section data-background="images/ushakova13/114.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/ushakova13/115.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section>
+            <h2>спасибо за внимание!</h2>
+        </section>
+
+        <!-- Заневская Ирина -->
+
+        <section>
+            <h2>Важность использования Dev Tools</h2>
+
+            <p class="author">Заневская Ирина</p>
+        </section>
+
+        <section data-background="images/kossakovskaya/789.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section>
+            <h2>редизайн</h2>
+            <p>это изменение внешнего вида чего-либо (в нашем случае, одной из составляющих сайта) с целью повысить
+                привлекательность и прибыльность продукта.</p>
+        </section>
+
+        <section data-background="images/kossakovskaya/123.jpeg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/kossakovskaya/111.jpeg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/kossakovskaya/222.jpeg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/kossakovskaya/125.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/kossakovskaya/234.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section data-background="images/kossakovskaya/777.jpg"
+                 data-background-size="contain">
+        </section>
+
+        <section>
+            <h2>спасибо за внимание!</h2>
+        </section>
+
+        <!-- Жигалов Сергей -->
+
+        <section>
+            <h2>Три истории от разработчика</h2>
+            <p class="author">Жигалов Сергей</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>#1. Структурное арпеджио</h2>
+                <small class="fragment">
+                    способ исполнения аккордов, преимущественно
+                    на струнных и клавишных инструментах,
+                    при котором звуки аккорда следуют один за другим.
+                </small>
+            </section>
+
+            <section>
+                <h3>Окружения</h3>
+                <ul>
+                    <li class="fragment">development</li>
+                    <li class="fragment">testing<span style="color: red">*</span></li>
+                    <li class="fragment">stress</li>
+                    <li class="fragment">prestable</li>
+                    <li class="fragment">production<span style="color: red">*</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Тестируем в продакшне</h3>
+                <ul>
+                    <li class="fragment">поделиться в соцсети <img
+                            src="images/zhigalov/share.png"
+                            alt="share"
+                            style="vertical-align: middle; margin: 0;"
+                    ></li>
+                </ul>
+            </section>
+
+            <section
+                    data-background="images/zhigalov/share_example.png"
+                    data-background-size="contain"
+            ></section>
+
+            <section>
+                <h3>Тестируем в продакшне</h3>
+                <ul>
+                    <li>поделиться в соцсети <img
+                            src="images/zhigalov/share.png"
+                            alt="share"
+                            style="vertical-align: middle; margin: 0;"
+                    ></li>
+                    <li class="fragment"><a href="https://instantarticles.fb.com/">Instant Articles</a></li>
+                    <li class="fragment">Оплата банковской картой</li>
+                    <li class="fragment">Смоук тестирование в бою</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Структурное арпеджио</h3>
+                <p style="text-align: left; text-indent: 5%">
+                    Гармонический интервал образует midi-контроллер.
+                    Плавно-мобильное голосовое поле имеет райдер.
+                    Open-air начинает длительностный мнимотакт.
+                </p>
+                <p style="text-align: left; text-indent: 5%">
+                    Техника изящно иллюстрирует хамбакер, не говоря уже о том,
+                    что рок-н-ролл мертв. Форшлаг, в первом приближении,
+                    диссонирует изоритмический микрохроматический интервал.
+                    Лайн-ап изящно вызывает райдер.
+                </p>
+                <p
+                        style="font-weight: bold; text-align: right"
+                >31 декабря 2024</p>
+            </section>
+
+            <section
+                    data-background="images/zhigalov/referat.png"
+                    data-background-size="contain"
+            >
+            </section>
+
+            <section>
+                <blockquote>
+                    Отправил на поисковую индексацию все опубликованные посты
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Выводы</h3>
+
+                <ol>
+                    <li class="fragment">Красивые тексты</li>
+                    <li class="fragment">Чистить за собой</li>
+                    <li class="fragment"><a href="https://en.wikipedia.org/wiki/Eating_your_own_dog_food">dogfooding</a>
+                    </li>
+                </ol>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>#2. Тестирование писем</h2>
+            </section>
+
+            <section>
+                <h3>Якин Дмитрий</h3>
+                <small><a href="https://youtu.be/HbQm006nKho?t=21m29s">«Хотели как лучше, а не получилось»</a></small>
+                <img src="images/zhigalov/mail.png" alt="mail">
+            </section>
+
+            <section>
+                <h3>Как тестируем мы</h3>
+                <ul>
+                    <li class="fragment">В тестовом окружении отправляем на один адрес</li>
+                    <li class="fragment">В начале письма вставляем адресата</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Пример письма</h3>
+                <img src="images/zhigalov/waiter-mail.png" alt="waiter-mail">
+            </section>
+
+            <section>
+                <h3>Выводы</h3>
+                <ol>
+                    <li class="fragment">Письмо не уйдёт наружу</li>
+                    <li class="fragment">Знаем кому и сколько писем отправляем</li>
+                </ol>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>#3. Гремлины</h2>
+            </section>
+
+            <section>
+                <h3>Monkey testing</h3>
+                <blockquote>
+                    методика испытания программных продуктов,
+                    основанная на имитации случайных действий пользователя,
+                    которые никак не связаны с реальными сценариями
+                    использования систем.
+                </blockquote>
+                <a
+                        href="https://yandex.ru/search/?text=Гремлины!&lr=54"
+                        class="fragment"
+                >ДЕМО</a>
+            </section>
+        </section>
+
+        <section>
+            <h3>Вот теперь точно всё!</h3>
+        </section>
+    </div>
+</div>
+
+<script src="../js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: '../js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+
+</body>
+</html>
