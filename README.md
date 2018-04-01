@@ -6,3 +6,4 @@
 3. [Тест-дизайн](https://urfu-2017.github.io/testing-slides/03_test-design/#/) \[[Домашняя работа](03_homework/README.md)\]
 4. [Тестовая документация. Требования](https://urfu-2017.github.io/testing-slides/04_documentation/#/) \[[Домашняя работа](04_homework/README.md)\]
 5. [Наш опыт ручного тестирования](https://urfu-2017.github.io/testing-slides/05_our_experience/#/) \[Домашки нет\]
+5. [Автотесты. Введение](https://urfu-2017.github.io/testing-slides/06-unit-test/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-01)\]

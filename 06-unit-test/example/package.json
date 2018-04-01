@@ -1,0 +1,14 @@
+{
+  "name": "06-unit-test",
+  "version": "0.0.1",
+  "description": "Project example",
+  "main": "plural.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "author": "Sergey Zhigalov <zhigalov@yandex-team.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "5.0.5"
+  }
+}
