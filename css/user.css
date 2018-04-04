@@ -49,7 +49,6 @@ pre,
     line-height: 6em;
 }
 
-
 .reveal pre.size-XS code {
     font-size: 1.3em;
     line-height: 1.4em;
@@ -63,4 +62,40 @@ pre,
 .reveal pre.size-XXXS code {
     font-size: 0.5em;
     line-height: 0.9em;
+}
+
+.reveal .console::before {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    line-height: initial;
+
+    color: black;
+    content: 'Console';
+
+    background-image: url('../images/mac-os-x-buttons.png');
+    background-color: #D6D6D6;
+    background-repeat: no-repeat;
+    background-position-y: center;
+
+    border-left: 8px solid #D6D6D6;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.reveal .console code {
+    font-size: 20px;
+    line-height: initial;
+
+    border: 2px solid #D6D6D6;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.reveal .paranja {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.reveal .fragment.grow.visible {
+    background: yellow;
 }
