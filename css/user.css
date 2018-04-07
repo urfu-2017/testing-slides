@@ -49,9 +49,14 @@ pre,
     line-height: 6em;
 }
 
+.reveal pre.size-S code {
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+
 .reveal pre.size-XS code {
-    font-size: 1.3em;
-    line-height: 1.4em;
+    font-size: 1.2em;
+    line-height: 1.3em;
 }
 
 .reveal pre.size-XXS code {
@@ -98,4 +103,47 @@ pre,
 
 .reveal .fragment.grow.visible {
     background: yellow;
+}
+
+.reveal blockquote {
+    box-shadow: none;
+}
+
+.reveal blockquote::before {
+    content: '“';
+    font-size: 150px;
+    display: block;
+    position: absolute;
+    color: #CCC;
+    left: -120px;
+    top: -20px;
+}
+.reveal blockquote::after {
+    content: '„';
+    font-size: 150px;
+    display: block;
+    position: absolute;
+    color: #CCC;
+    right: -80px;
+    bottom: -20px;
+}
+
+.reveal section .pos:before,
+.reveal section .neg:before {
+    margin-right: 15px;
+}
+
+.reveal section .pos,
+.reveal section .neg {
+    text-align: left;
+}
+
+.reveal section .pos:before {
+    content: '✓';
+    color: green !important;
+}
+
+.reveal section .neg:before {
+    content: '✗';
+    color: red !important;
 }
