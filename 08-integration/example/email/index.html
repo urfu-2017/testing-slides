@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        .form {
+            height: 300px;
+            background-color: antiquewhite;
+            display: flex;
+            position: relative;
+        }
+
+        .input-wrapper {
+            margin: auto;
+            position: relative;
+            width: 60%;
+        }
+
+        #email:required:valid {
+            border: 3px solid green;
+        }
+
+        #email:required:invalid {
+            border: 3px solid red;
+        }
+
+        #email {
+            height: 30px;
+            width: 90%;
+            border: 3px solid black;
+            border-radius: 4px;
+            padding: 10px;
+            position: relative;
+            font-size: 48px;
+        }
+
+        .simbols {
+            position: relative;
+        }
+
+        #email:required:valid + .simbols:before {
+            content: '\2714';
+            position: absolute;
+            top: -32px;
+            left: 10px;
+            color: green;
+            font-size: 48px;
+        }
+
+        #email:required:invalid + .simbols:after {
+            content: '\2717';
+            position: absolute;
+            top: -32px;
+            left: 10px;
+            color: red;
+            font-size: 48px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="form">
+    <div class="input-wrapper">
+        <input id="email" type="email" placeholder="Ваш email" required><span class="simbols"></span>
+    </div>
+</div>
+
+</body>
+</html>

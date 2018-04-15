@@ -6,5 +6,6 @@
 3. [Тест-дизайн](https://urfu-2017.github.io/testing-slides/03_test-design/#/) \[[Домашняя работа](03_homework/README.md)\]
 4. [Тестовая документация. Требования](https://urfu-2017.github.io/testing-slides/04_documentation/#/) \[[Домашняя работа](04_homework/README.md)\]
 5. [Наш опыт ручного тестирования](https://urfu-2017.github.io/testing-slides/05_our_experience/#/) \[Домашки нет\]
-5. [Автотесты. Введение](https://urfu-2017.github.io/testing-slides/06-unit-test/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-01)\]
-6. [Стратегии тестирования. Подходы к разработке. Подмены](https://urfu-2017.github.io/testing-slides/07-mock/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-02)\]
+6. [Автотесты. Введение](https://urfu-2017.github.io/testing-slides/06-unit-test/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-01)\]
+7. [Стратегии тестирования. Подходы к разработке. Подмены](https://urfu-2017.github.io/testing-slides/07-mock/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-02)\]
+8. [Управление временем. Интеграционные тесты. Тестирование в браузере](https://urfu-2017.github.io/testing-slides/07-mock/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-03)\]
