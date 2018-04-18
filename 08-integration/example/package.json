@@ -1,0 +1,24 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "Examples for lection about integration tests",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha test"
+  },
+  "author": "sergey.zhigalov@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "4.1.2",
+    "mocha": "^5.1.0",
+    "mocha-headless-chrome": "1.8.3",
+    "nock": "9.2.5",
+    "sinon": "^4.5.0"
+  },
+  "dependencies": {
+    "got": "8.3.0"
+  }
+}

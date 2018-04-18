@@ -1,0 +1,864 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Integration</title>
+
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/white.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/tomorrow.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section>
+            <h1>Автотесты</h1>
+            <p>Подмены. Управление временем. Интеграционные тесты. Тестирование в браузере</p>
+            <p class="author">Жигалов Сергей</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>spy</h2>
+            </section>
+
+            <section>
+                <h3>spy</h3>
+                <blockquote>
+                    функция, котороя запоминает для каждого вызова:
+                    с какими аргументами её вызвали, какое значение вернули
+                    и произошло ли исключение.
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Пример</h3>
+                <pre class="js size-XS"><code data-trim>
+const getTweets = require('./getTweets');
+
+function showTweets() {
+    const tweets = getTweets('#urfu-testing-2017');
+
+    tweets.forEach(tweet => console.log(tweet.text));
+};
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-S"><code data-trim data-noescape>
+const sinon = require('sinon');
+
+describe('showTweets', () => {
+    <span class="fragment">beforeEach(() => {
+        sinon.spy(console, 'log');
+    });</span>
+
+    <span class="fragment">afterEach(() => {
+        console.log.restore();
+    });</span>
+
+    <span class="fragment">/* ... */</span>
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('showTweets', () => {
+    /* ... */
+
+    it('should print tweet text', () => {
+        showTweets();
+
+        <span class="fragment">assert.equal(console.log.callCount, 2);</span>
+        <span class="fragment">assert.deepEqual(
+            console.log.getCall(0).args,
+            ['Для подмены сетевых запросов ...']
+        );</span>
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <blockquote>
+                    Функции-шпионы не только сохраняют прежнее поведение,
+                    но позволяют узнать как эти функции вызвали.
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Контекст</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+it('spy ordering', () => {
+    const first = sinon.spy();
+    const second = sinon.spy();
+    const third = sinon.spy();
+
+    <span class="fragment">first();
+    second();
+    third();</span>
+
+    <span class="fragment">assert(first.calledBefore(third));
+    assert(first.calledImmediatelyBefore(second));</span>
+});
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section data-background-image="images/time.jpg">
+                <h3 class="paranja">Управление временем</h3>
+            </section>
+
+            <section>
+                <h3>Бонусное задание</h3>
+                <blockquote>
+                    ... Сделать из твитов бегущую строку. Для этого нужно выводить на
+                    консоль по одному символу раз в 100ms.
+                </blockquote>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;">setTimeout</h3>
+                <pre class="js"><code data-trim>
+setTimeout(() => {
+    console.log('Прошла секунда');
+}, 1000);
+        </code></pre>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;">console.log</h3>
+                <pre class="js"><code data-trim>
+console.log('Длинное предложение');
+console.log('в одну строку.');
+                </code></pre>
+                <pre class="console fragment"><code data-trim>
+Длинное предложение
+в одну строку.
+                </code></pre>
+                <div class="fragment" style="font-size: 100px">👎</div>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;">process.stdout.write</h3>
+                <pre class="js"><code data-trim>
+process.stdout.write('Одно');
+process.stdout.write('строчный');
+                </code></pre>
+                <pre class="console fragment"><code data-trim>
+Однострочный
+                </code></pre>
+                <div class="fragment" style="font-size: 100px">👍</div>
+            </section>
+
+            <section>
+                <h3>Решение</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+function crawlLine(text, cb) {
+    <span class="fragment">const letters = text.split('');</span>
+
+    <span class="fragment">function print() {
+        if (!letters.length) return cb();
+
+        process.stdout.write(letters.shift());
+        setTimeout(print, 100);
+    }</span>
+
+    <span class="fragment">print();</span>
+}
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-S"><code data-trim>
+describe('crawlLine', () => {
+    beforeEach(() => {
+        sinon.spy(process.stdout, 'write');
+    });
+
+    afterEach(() => {
+        process.stdout.write.restore();
+    });
+
+    /* ... */
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XS"><code data-trim>
+describe('crawlLine', () => {
+    /* ... */
+
+    it('should print letters one by one', () => {
+        crawlLine('I don’t always bend time and ' +
+            'space in unit tests, but when I do, ' +
+            'I use Buster.JS + Sinon.JS');
+        assert.equal(process.stdout.write.callCount, 91);
+    });
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-image="images/crawlLine_test_failed_1.png"
+                    data-background-size="contain"
+            ></section>
+
+            <section>
+                <blockquote>
+                    <code>cb</code> будет вызван,
+                    когда работа функции завершится.
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XS"><code data-trim>
+it('should print letters one by one', () => {
+    crawlLine('I don’t always bend time and ' +
+        'space in unit tests, but when I do, ' +
+        'I use Buster.JS + Sinon.JS', () => {
+        assert.equal(process.stdout.write.callCount, 91);
+    });
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-image="images/crawlLine_test_failed_2.png"
+                    data-background-size="contain"
+            ></section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XS"><code data-trim>
+it('should print letters one by one', done => {
+    crawlLine('I don’t always bend time and ' +
+        'space in unit tests, but when I do, ' +
+        'I use Buster.JS + Sinon.JS', () => {
+        assert.equal(process.stdout.write.callCount, 91);
+        done();
+    });
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-video="images/crawlLine_test_failed_3.webm"
+                    data-background-size="contain"
+            ></section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XS"><code data-trim>
+it('should print letters one by one', function (done) {
+    this.timeout(30000);
+    crawlLine('I don’t always bend time and ' +
+        'space in unit tests, but when I do, ' +
+        'I use Buster.JS + Sinon.JS', () => {
+        assert.equal(process.stdout.write.callCount, 91);
+        done();
+    });
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-video="images/crawlLine_test_failed_4.webm"
+                    data-background-size="contain"
+            ></section>
+
+            <section>
+                <h3>Faking time</h3>
+                <pre class="js size-S"><code data-trim>
+beforeEach(() => {
+    clock = sinon.useFakeTimers();
+});
+
+afterEach(() => {
+    clock.restore();
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <pre class="js size-XS"><code data-trim>
+it('should print letters one by one', done => {
+    crawlLine('I don’t always bend time and ' +
+        'space in unit tests, but when I do, ' +
+        'I use Buster.JS + Sinon.JS', () => {
+        assert.equal(process.stdout.write.callCount, 91);
+        done();
+    });
+
+    clock.tick(10000);
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-image="images/crawlLine_test_success.png"
+                    data-background-size="contain"
+            ></section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Относительное время</h3>
+            </section>
+
+            <section>
+                <h3>Относительное время</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('formatDate', () => {
+    let clock;
+
+    beforeEach(() => {
+        const startDate = <span class="grow">new Date(2018, 4, 15).getTime();</span>
+        clock = sinon.useFakeTimers(startDate);
+    });
+
+    afterEach(() => {
+        clock.restore();
+    });
+
+    /* ... */
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Относительное время</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+describe('formatDate', () => {
+    /* ... */
+
+    it('should return only time', () => {
+        const tweetsDate = new Date(2018, 4, 15, 6, 17);
+        const actual = formatDate(tweetsDate);
+
+        assert.equal(actual, '06:17');
+    });
+});
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Работа с асинхронностью</h3>
+            </section>
+
+            <section>
+                <h3>Задача</h3>
+                <blockquote>
+                    Вывести прогноз погоды на консоль
+                </blockquote>
+            </section>
+
+            <section
+                    data-background-image="images/weather.jpg"
+                    data-background-size="contain"
+            >
+                <h4 class="paranja" style="text-transform: none;"><code>curl http://wttr.in/ekaterinburg</code></h4>
+            </section>
+
+            <section
+                    data-background-image="images/forecast.png"
+                    data-background-size="contain"
+            >
+                <h4 class="paranja fragment" style="text-transform: none;"><code>https://api.weather.yandex.ru/v1/forecast</code>
+                </h4>
+            </section>
+
+            <section>
+                <h3>Решение</h3>
+                <pre class="js size-S"><code data-trim data-noescape>
+const got = require('got');
+const url = 'https://api.weather.yandex.ru' +
+            '/v1/forecast';
+
+function getFactTemp() {
+    <span class="fragment">return got(url, { json: true })</span>
+        <span class="fragment">.then(res => res.body.fact.temp);</span>
+};
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тесты</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('getFactTemp', () => {
+    it('should get fact temperature', done => {
+        <span class="fragment">getWeather()</span>
+            <span class="fragment">.then(actual => assert.equal(actual, 2))</span>
+            <span class="fragment">.then(done, done);</span>
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <blockquote>
+                    Если вызвать <code>done()</code> без аргументов,
+                    то тест завершится успешно. Если вызвать <code>done(error)</code>
+                    с аргументом, то тест завершится с ошибкой.
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Тесты</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('getFactTemp', () => {
+    it('should get fact temperature', <span class="fragment grow">()</span> => {
+        <span class="fragment grow">return</span> getWeather()
+            .then(actual => assert.equal(actual, 2));
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тесты</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('getFactTemp', () => {
+    it('should get fact temperature', <span class="fragment grow">async</span> () => {
+        const actual = <span class="fragment grow">await</span> getWeather();
+
+        assert.equal(actual, 2);
+    });
+});
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Подмена сетевых запросов</h3>
+            </section>
+
+            <section>
+                <h3>nock <span class="fragment">⭐️ 6190</span></h3>
+                <pre class="js fragment console"><code data-trim>
+npm install nock --save-dev
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тесты</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('getFactTemp', () => {
+    <span class="fragment">beforeEach(() => {
+        nock('https://api.weather.yandex.ru')
+            .get('/v1/forecast')
+            .reply(200, { fact: { temp: 2 } });
+    });</span>
+
+    <span class="fragment">afterEach(() => {
+        nock.cleanAll();
+    });</span>
+
+    /* ... */
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <blockquote>
+                    Все запросы по сети будут подменяться по правилам,
+                    описанным в <code>nock()</code>.
+                </blockquote>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Интеграционные тесты</h3>
+                <blockquote class="fragment" cite="https://habrahabr.ru/post/81226/">
+                    тестирование группы взаимодействующих модулей
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>О важности интеграционных тестов</h3>
+                <img src="images/marsRover.jpg" alt="marsRover">
+            </section>
+
+            <section
+                    data-background-image='images/pyramid.png'
+                    data-background-size='contain'
+                    data-background-color='#e7e8e9'>
+            </section>
+
+            <section>
+                <h3>тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+it('should return `Ничья` for equal poker hand', () => {
+    <span class="fragment fade-out">const getPokerHand = sinon.stub();
+    getPokerHand.withArgs([1, 1, 2, 3, 4]).returns('Пара');
+    getPokerHand.withArgs([1, 1, 2, 3, 5]).returns('Пара');
+    getPokerHand.throws('Illegal arguments');
+
+    const playPoker = proxyquire('../playPoker', {
+        './getPokerHand': getPokerHand
+    });</span>
+    const actual = playPoker([1, 1, 2, 3, 4], [1, 1, 2, 3, 5]);
+
+    assert.equal(actual, 'Ничья');
+});
+        </code></pre>
+            </section>
+
+            <section>
+                <h3>Weather</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('getFactTemp', () => {
+    <span class="fragment fade-out">beforeEach(() => {
+        nock('https://api.weather.yandex.ru')
+            .get('/v1/forecast')
+            .reply(200, { fact: { temp: 2 } });
+    });
+
+    afterEach(() => {
+        nock.cleanAll();
+    });</span>
+
+    it('should get fact temperature', async () => {
+        const actual = await getWeather();
+
+        assert(<span class="fragment grow">Number.isInteger(actual)</span>);
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Рекомендации</h3>
+                <ul>
+                    <li class="fragment">Подготовить изолированное окружение</li>
+                    <li class="fragment">Покрывать всю логику модульными тестами</li>
+                    <li class="fragment">Писать минимум интеграционных тестов</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Интеграционные тесты</h3>
+                <p class="fragment pos">Полезные</p>
+                <p class="fragment neg">Медленные</p>
+                <p class="fragment neg">Нестабильные</p>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Тестирование через интерфейс</h3>
+            </section>
+
+            <section>
+                <h3>Задача</h3>
+                <blockquote>
+                    Пользователи вводят адрес электронной почты при заполнении формы.
+                    Реализовать валидацию полей формы.
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Пример</h3>
+                <iframe
+                        src="./example/email/index.html"
+                        frameborder="0"
+                        width="500"
+                        height="300"
+                ></iframe>
+            </section>
+
+            <section>
+                <h3>Решение</h3>
+                <pre class="js"><code data-trim>
+&lt;input  id="email"
+        type="email"
+        placeholder="Ваш email"
+        required &gt;
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Тестирование HTML</h3>
+            </section>
+
+            <section>
+                <h3>Решение</h3>
+                <pre class="html size-XS"><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;title&gt;Email&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;input  id="email"
+                type="email"
+                placeholder="Ваш email"
+                required&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Подключение на страницу</h3>
+                <pre class="html fragment size-XS"><code data-trim>
+&lt;head&gt;
+    &lt;!-- подключаем стили, чтобы тесты вяглядели красиво --&gt;
+    &lt;link href=&quot;path/to/mocha.css&quot; rel=&quot;stylesheet&quot; /&gt;
+&lt;/head&gt;
+                </code></pre>
+                <pre class="html fragment size-XS"><code data-trim>
+&lt;body&gt;
+    &lt;!-- относительно этого элемента
+         выводится тестовый отчет --&gt;
+    &lt;div id=&quot;mocha&quot;&gt;&lt;/div&gt;
+
+    &lt;!-- конфигурируем и запускаем тесты --&gt;
+    &lt;script src=&quot;path/to/mocha.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;mocha.setup('bdd');
+            mocha.run();&lt;/script&gt;
+&lt;/body&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;"><code>path/to/mocha</code></h3>
+                <pre class="none fragment size-XXS"><code data-trim>
+"./node_modules/mocha/mocha.css"
+"./node_modules/mocha/mocha.js"
+                </code></pre>
+                <pre class="none fragment size-XXS"><code data-trim>
+"https://cdnjs.cloudflare.com/ajax/libs/mocha/5.1.0/mocha.css"
+"https://cdnjs.cloudflare.com/ajax/libs/mocha/5.1.0/mocha.js"
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Assert?</h3>
+                <pre class="js"><code>
+const assert = require('assert');
+                </code></pre>
+                <div class="fragment" style="font-size: 100px">⛔</div>
+            </section>
+
+            <section>
+                <h3>chaijs <span class="fragment">⭐️ 5276</span></h3>
+                <pre class="html fragment size-XS"><code data-trim>
+&lt;script src=&quot;http://chaijs.com/chai.js&quot;&gt;&lt;/script&gt;
+                </code></pre>
+                <pre class="html fragment size-XS"><code data-trim>
+&lt;script&gt;
+    chai.assert.equal(1 + 1, 2);
+&lt;/script&gt;
+                </code></pre>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;"><code>chai.expect</code></h3>
+                <pre class="js"><code data-trim>
+chai.expect(1 + 1).to.equal(2);
+chai.expect(Boolean(1)).to.be.true;
+                </code></pre>
+            </section>
+
+            <section>
+                <h3 style="text-transform: none;"><code>chai.should</code></h3>
+                <pre class="js fragment"><code data-trim>
+chai.should();
+
+[1, 2, 3].should.deep.equal([1, 2, 3]);
+[1, 2, 3].should.have.length(3);
+[1, 2, 3].should.be.an('array');
+        </code></pre>
+            </section>
+
+            <section>
+                <h3>Тесты</h3>
+                <pre class="js size-XS"><code data-trim>
+describe('email', () => {
+    it('should success when input correct email', () => {
+        const email = document.getElementById('email');
+
+        email.value = 'ivan@example.com';
+
+        chai.assert(email.checkValidity());
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Итог</h3>
+                <pre class="html size-XXS"><code data-noescape data-trim>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;title&gt;Email&lt;/title&gt;
+    &lt;link href="node_modules/mocha/mocha.css" rel="stylesheet"/&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;input id="email" type="email" placeholder="Ваш email" required&gt;
+
+    &lt;div id="mocha"&gt;&lt;/div&gt;
+
+    &lt;script src="node_modules/mocha/mocha.js"&gt;&lt;/script&gt;
+    &lt;script src="node_modules/chai/chai.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        mocha.setup('bdd');
+        describe('Email', () =&gt; {
+            it('should success when input correct email');
+        });
+        mocha.run();
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Запускаем</h3>
+                <iframe
+                        src="./example/tests/email/index-test.html"
+                        frameborder="0"
+                        width="600"
+                        height="600"
+                ></iframe>
+            </section>
+
+            <section>
+                <h3>Плюсы</h3>
+                <ul>
+                    <li class="fragment">Просто писать</li>
+                    <li class="fragment">Быстро выполняются</li>
+                    <li class="fragment">Запускаются на любом реальном браузере</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Минусы</h3>
+                <ul>
+                    <li class="fragment">Отдельная сборка с тестами</li>
+                    <li class="fragment">Приходится запускать руками</li>
+                    <li class="fragment">Нельзя автоматизировать запуск</li>
+                    <li class="fragment">Сложно совершать действия</li>
+                    <li class="fragment">В рамках одной страницы</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h3>Запуск в консоли</h3>
+            </section>
+
+            <section
+                    data-background-image="images/headless_chrome.png"
+            ></section>
+
+            <section>
+                <img src="images/puppeteer.png" alt="puppeteer">
+                <h3 class="fragment">puppeteer <span class="fragment">⭐️ 30444</span></h3>
+            </section>
+
+            <section>
+                <h3>Запускаем</h3>
+                <pre class="bash console size-XS"><code data-trim data-noescape>
+npm i mocha-headless-chrome --save-dev
+
+<span class="fragment">node_modules/.bin/mocha-headless-chrome
+    -f path/to/test/file.html</span>
+
+<span class="fragment">Email
+    ✓ should success when input correct email
+    ✓ should failed when input incorrect email
+
+
+  2 passing (22ms)</span>
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Плюсы</h3>
+                <ul>
+                    <li class="fragment">Просто писать</li>
+                    <li class="fragment">Быстро выполняются</li>
+                    <li class="fragment">Запуск автоматизируется</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Минусы</h3>
+                <ul>
+                    <li class="fragment">Отдельная сборка с тестами</li>
+                    <li class="fragment">Запускается только в одном браузере</li>
+                    <li class="fragment">Сложно совершать действия</li>
+                    <li class="fragment">В рамках одной страницы</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <h3>Почитать</h3>
+            <ul>
+                <li><a href="http://sinonjs.org/">sinon.js</a></li>
+                <li><a href="https://www.npmjs.com/package/got">got</a></li>
+                <li><a href="https://www.npmjs.com/package/nock">nock</a></li>
+                <li><a href="http://chaijs.com/">chaijs</a></li>
+                <li><a href="https://medium.com/devschacht/phantomjs-is-over-df065e5b23bf">PhantomJS всё?</a></li>
+                <li><a href="https://developers.google.com/web/updates/2017/04/headless-chrome">Getting Started with
+                    Headless Chrome</a></li>
+                <li><a href="https://chromium.googlesource.com/chromium/src/+/lkgr/headless/README.md">Headless
+                    Chromium</a></li>
+                <li><a href="https://habrahabr.ru/post/81226/">Виды тестирования и подходы к их применению</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h3><a href="https://github.com/urfu-2017/autotests-task-03">Задача «Крестики-нолики»</a></h3>
+        </section>
+    </div>
+</div>
+
+<script src="../js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: '../js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>
