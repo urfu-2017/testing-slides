@@ -1,0 +1,1271 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Тестирование пользовательских сценариев</title>
+
+    <link rel="stylesheet" href="../css/reveal.css">
+    <link rel="stylesheet" href="../css/theme/white.css">
+    <link rel="stylesheet" href="../css/user.css">
+    <link rel="stylesheet" href="../css/tomorrow.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+
+        <section>
+            <h1>Автотесты</h1>
+            <p>Тестирование пользовательских сценариев</p>
+            <p class="author">Гробов Сергей</p>
+        </section>
+
+        <section>
+            <h2>Что потребуется знать</h2>
+            <ul>
+                <li class="fragment">Что такое пользовательский сценарий</li>
+                <li class="fragment">Синтаксис библиотеки <img
+                        src="https://mochajs.org/favicon.ico"
+                        alt="mocha ico" style="margin: 0; height: 28px; background: none;">mocha
+                </li>
+            </ul>
+        </section>
+
+        <!-- Проблематика -->
+        <section>
+            <section>
+                <h2>Проблема</h2>
+            </section>
+
+            <section>
+                <h3>Некоторый рабочий процесс</h3>
+                <span class="fragment">
+                    <p><b>Даша</b> - ручной тестировщик</p>
+                    <img style="left: -200px; position: absolute;" src="images/dsha.jpg" alt="No">
+                </span>
+                <ul>
+                    <li class="fragment">Agile-команда</li>
+                    <li class="fragment">Взрослый и стабильный проект</li>
+                    <li class="fragment">Релиз каждые 3 дня</li>
+                    <li class="fragment">Перед релизом обязателен регресc</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Составляющие регресса</h3>
+                <ul>
+                    <li class="fragment">Тестовый набор из 60 кейсов</li>
+                    <li class="fragment">С каждым выходом новой функциональности + N кейсов</li>
+                    <li class="fragment">Проверка на популярных десктопных браузеров</li>
+                    <li class="fragment">Проверка в браузерах на Android + iOS</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Проблема</h3>
+                <table>
+                    <tr>
+                        <th>Рабочий процесс</th>
+                        <th>Регресс</th>
+                    </tr>
+                    <tr style="background-color: #eee">
+                        <td>Agile-команда</td>
+                        <td>Тестовый набор из 60 кейсов</td>
+                    </tr>
+                    <tr>
+                        <td>Взрослый и стабильный проект</td>
+                        <td>Фича добавляет N кейсов</td>
+                    </tr>
+                    <tr style="background-color: #eee">
+                        <td>Релиз каждые 3 дня</td>
+                        <td>Проверка на десктопах</td>
+                    </tr>
+                    <tr>
+                        <td>Перед релизом регресc</td>
+                        <td>Проверка на Android + iOS</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section data-background="images/dasha-help.jpg" data-background-size='contain'></section>
+            <section data-background="images/dasha-help.jpg" data-background-size='contain'></section>
+
+            <section>
+                <h3>Как облегчить регресс?</h3>
+                <table>
+                    <tr>
+                        <th>Воркфлоу</th>
+                        <th>Регресс</th>
+                    </tr>
+                    <tr style="background-color: #eee">
+                        <td>Agile-команда</td>
+                        <td>Тестовый набор из 60 кейсов</td>
+                    </tr>
+                    <tr>
+                        <td>Взрослый и стабильный проект</td>
+                        <td>Фича добавляет N кейсов</td>
+                    </tr>
+                    <tr style="background-color: #eee">
+                        <td>Релиз каждые 3 дня</td>
+                        <td>Проверка на популярных десктопах</td>
+                    </tr>
+                    <tr>
+                        <td>Перед релизом регресc</td>
+                        <td>Проверка на Android + iOS</td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h3>Хорошие варианты</h3>
+                <ul>
+                    <li class="fragment">Оптимизировать тестовый набор</li>
+                    <li class="fragment">Чередовать браузеры при различных регрессах</li>
+                    <li class="fragment">Проверять только то, что реально было затронуто + смоук</li>
+                    <li class="fragment">Нанять еще тестировщика</li>
+                    <li class="fragment">Отдать регресс на аутсорс</li>
+                </ul>
+            </section>
+
+            <section data-background="images/dasha-e2e.jpg" data-background-size='contain'></section>
+
+        </section>
+
+        <!-- E2E -->
+        <section>
+            <section>
+                <h2>End-to-End тестирование</h2>
+                <blockquote class="fragment">Интеграционные тесты, которые воздействуют на систему через ее внешние
+                    интерфейсы и проверяют
+                    ожидаемую реакцию системы через эти же интерфейсы
+                </blockquote>
+            </section>
+
+            <section>
+                <h2>Что хотим получить?</h2>
+                <blockquote class="fragment">
+                    Браузер сам «делает» действия согласно тест-кейсу
+                </blockquote>
+            </section>
+
+            <section>
+                <h4>Стоит задуматься о E2E-тестах, если:</h4>
+                <ul>
+                    <li class="fragment">Частые релизы + регрессы</li>
+                    <li class="fragment">Критично проверять на многих браузерах</li>
+                    <li class="fragment">Тестовый набор большой и расширяется</li>
+                    <li class="fragment">Тесты содержат рутинные и долгие действия</li>
+                    <li class="fragment">Проект относительно стабилен</li>
+                </ul>
+            </section>
+        </section>
+
+        <section data-background="images/road_where.png" data-background-size='contain'></section>
+
+        <!-- Тест-раннер -->
+        <section>
+            <section>
+                <h3>E2E test runner</h3>
+                <blockquote>
+                    Фреймворк для написания <br>end-to-end тестов
+                </blockquote>
+            </section>
+
+            <section>
+                <h2>E2E test runner</h2>
+
+                <img src="images/herm-analog.png">
+            </section>
+
+            <section data-background="images/hermione.jpeg" data-background-size='contain'></section>
+
+            <section>
+                <h2>Составные части Hermione</h2>
+
+                <img src="images/herm-serv.png">
+            </section>
+        </section>
+
+        <!-- selenium -->
+        <section>
+
+            <section>
+                <h2>Selenium</h2>
+                <img src="images/sel-logo.png">
+            </section>
+
+            <section>
+                <h3>Изначально было 2 проекта</h3>
+            </section>
+
+            <section>
+                <h2>Selenium</h2>
+                <ul>
+                    <li>Набор инструментов, предназначенных для автоматизации браузеров на различных платформах</li>
+                    <li><b>Selenuim RC</b>: Внедрял javascript-код в браузер при запуске и использовал его для
+                        управления веб-приложением
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Webdriver</h2>
+                <ul>
+                    <li>Инструмент для управления браузером</li>
+                    <li>Напрямую вызывает команды браузера, используя родной для каждого конкретного браузера API</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>2008 год</h2>
+                <ul>
+                    <li class="fragment">Слияние Selenium и Webdriver</li>
+                    <li class="fragment">Проект стали назвать:
+                        <ul>
+                            <li>Selenium 2.0</li>
+                            <li>Selenium Webdriver</li>
+                            <li>Webdriver</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+        </section>
+
+        <!-- Как начать пользоваться -->
+        <section>
+            <section>
+                <h3>Программные решения Selenium</h3>
+            </section>
+
+            <section>
+                <h3>1. Интерфейсные решения</h3>
+                <blockquote class="fragment">
+                    Умеют записывать действия в браузере в команды Selenium для повторного воспроизведения
+                </blockquote>
+            </section>
+
+            <section>
+                <h3>Selenium IDE</h3>
+                <blockquote>Плагин для Firefox</blockquote>
+            </section>
+
+            <section data-background="images/Selenium_IDE.png" data-background-size='contain'></section>
+
+            <section data-background="images/selenium-ide-view.jpg" data-background-size='contain'></section>
+
+            <section data-background="images/selenium-ide-lodash.gif" data-background-size='contain'></section>
+
+            <section>
+                <h3>Selenium IDE</h3>
+                <blockquote class="fragment strike">Плагин для Firefox</blockquote>
+                <ul class="fragment">
+                    <li>C версии Firefox 55 не поддерживается</li>
+                    <li class="fragment">Есть альтернативы. Например: плагин <a href="https://addons.mozilla.org/en-US/firefox/addon/katalon-automation-record/">Katalon Recorder</a></li>
+                </ul>
+            </section>
+
+            <section>
+                <h4>2. SELENIUM + Язык программирования (Javascript)</h4>
+            </section>
+
+            <section>
+                <h3>Популярные библиотеки</h3>
+                <ul>
+                    <li>selenium-webdriverjs ⭐ 10090 ️</li>
+                    <li>WD.js ⭐ 1282</li>
+                    <li class="fragment grow">webdriverio ⭐ 3880</li>
+
+                </ul>
+            </section>
+
+        </section>
+
+        <!-- Webdriverio -->
+        <section>
+            <section>
+                <h3>webdriverio</h3>
+                <img src="images/webdriverio.png">
+            </section>
+
+            <section>
+                <h2>205 различных команд для управления браузером</h2>
+                <p><a href="http://webdriver.io/api.html">Команды webdriverio</a></p>
+            </section>
+
+            <section>
+                <h2>Отличная документация</h2>
+            </section>
+
+            <section data-background="images/webdr-api.png" data-background-size='contain'></section>
+
+            <section
+                    data-background-video="images/search_command.mp4"
+                    data-background-size="contain">
+            </section>
+        </section>
+
+        <!-- Быстрый старт -->
+        <section>
+            <section>
+                <h2>Составные части Hermione</h2>
+
+                <img src="images/herm-serv.png">
+            </section>
+
+            <section>
+                <h2>Hermione. Быстрый старт</h2>
+
+                <a href="https://github.com/gemini-testing/hermione#hermione">Репозиторий</a>
+            </section>
+
+            <section data-background="images/hermione-readme.png" data-background-size='contain'></section>
+
+            <section>
+                <h4>hermione. Установка</h4>
+                <pre class="bash console"><code data-trim>
+# Устанавливаем hermione
+npm install hermione --save
+                </code></pre>
+            </section>
+
+            <section>
+                <h4>Создаем в корне файл .hermione.conf.js</h4>
+
+                <pre class="js size-XS"><code data-trim data-noescape>
+module.exports = {<span class="fragment" data-fragment-index="1">
+    sets: {
+        // путь до тестов
+        desktop: {
+            files: 'tests/desktop'
+        }
+    },</span>
+<span class="fragment" data-fragment-index="2">
+    browsers: {
+        // определяем браузер
+        firefox: {
+            desiredCapabilities: {
+                browserName: 'firefox'
+            }
+        }
+    }</span>
+};
+                </code></pre>
+            </section>
+
+            <section>
+                <h4>Пишем пробный тест</h4>
+
+                <pre class="js size-XXS"><code data-trim>
+// test/desktops/example-1.js
+
+var assert = require('assert');
+
+describe('github', function() {
+
+    it('should find hermione', function() {
+        return this.browser
+            .url('https://github.com/gemini-testing/hermione')
+            .getText('#readme h1')
+            .then(function(title) {
+                assert.equal(title, 'Hermione')
+            });
+    });
+
+});
+                    </code></pre>
+            </section>
+
+
+            <section>
+                <h3>Запуск</h3>
+                <pre class="bash console"><code data-trim>
+> hermione
+
+✘ github should find hermione [firefox] - 42ms
+Total: 1 Passed: 0 Failed: 1 Skipped: 0 Retries: 0
+
+1) github should find hermione
+   in file tests/desktop/example-1.js
+
+   firefox
+     ✘ Error: connect ECONNREFUSED 127.0.0.1:4444
+
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Схема взаимодействия</h3>
+            </section>
+
+            <section data-background="images/scheme.png" data-background-size='contain'></section>
+
+        </section>
+
+        <!-- Selenium grid -->
+        <section>
+            <section>
+                <h3>Selenium grid</h3>
+                <blockquote>
+                    Центральный узел, который получает все запросы тестов и распределяет их по надлежащим узлам
+                    (браузерам).
+                </blockquote>
+            </section>
+
+            <section>
+                <h5>Сервисы представляющие Selenium Grid</h5>
+                <img src="images/saucelabs-logo.png" alt="saucelabs-logo">
+                <img src="images/browserstack-logo.png" alt="browserstack-logo">
+                <img src="images/testingbot.png" width="200" alt="testingbot-logo">
+            </section>
+
+            <section>
+                <h2>BrowserStack</h2>
+                <ol>
+                    <li class="fragment">Регистрируемся и входим в аккаунт</li>
+                    <li class="fragment">Переходим в Account → Settings</li>
+                    <li class="fragment">Видим свой Access-Key в секции Automate</li>
+                </ol>
+            </section>
+
+            <section
+                    data-background-image="images/brows1.png"
+                    data-background-size="contain">
+            </section>
+
+            <section
+                    data-background-image="images/br2.png"
+                    data-background-size="contain">
+            </section>
+
+            <section>
+                <h4>.hermione.conf.js</h4>
+
+                <pre class="js size-XXS"><code data-trim data-noescape>
+module.exports = {
+    sets: {
+        desktop: {
+            files: 'tests/desktop'
+        }
+    },
+    browsers: {
+        chrome: {
+            desiredCapabilities: {
+                browserName: 'firefox'
+            }
+        }
+    }<span class="fragment" data-fragment-index="1">,
+    // ссылка на Selenium Grid
+    gridUrl: `http://USERNAME:ACCESSKEY
+                    @hub-cloud.browserstack.com:80/wd/hub`
+</span>
+};
+                </code></pre>
+
+                <pre class="fragment bash console size-XXS"><code data-trim>
+> hermione
+✓ github should find hermione [firefox] - 6551ms
+Total: 1 Passed: 1 Failed: 0 Skipped: 0 Retries: 0
+                </code></pre>
+
+            </section>
+
+            <section>
+                <h3 style="color: darkred">Так делать не безопасно!</h3>
+            </section>
+
+            <section>
+                <blockquote><b>Правило:</b> Секреты хранить в переменных окружения</blockquote>
+            </section>
+
+            <section>
+                <h3>.hermione.conf.js</h3>
+                <pre class="js size-XXS"><code data-trim>
+module.exports = {
+    /* ... */
+
+    gridUrl: `http://${process.env.USERNAME}
+                    :${process.env.ACCESSKEY}
+                    @hub-cloud.browserstack.com:80/wd/hub`,
+};
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>package.json</h3>
+                <pre class="js size-XS"><code data-trim>
+// package.json
+
+"scripts": {
+    "test": "hermione"
+}
+                </code></pre>
+                <pre class="bash console size-XXS"><code data-trim data-noescape>
+# Запуск
+USERNAME=username ACCESSKEY=accesskey npm test
+
+<span class="fragment" data-fragment-index="1">
+> hermione
+✓ github should find hermione [firefox] - 6551ms
+Total: 1 Passed: 1 Failed: 0 Skipped: 0 Retries: 0</span>
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-image="images/github_br.png"
+                    data-background-size="contain">
+            </section>
+
+            <section>
+                <h3>Облачный Selenium Grid</h3>
+                <p class="fragment pos">Есть браузеры различных версий</p>
+                <p class="fragment neg">Платно</p>
+                <p class="fragment neg">Сложно делать отладку</p>
+                <p class="fragment neg">Нельзя тестировать localhost</p>
+            </section>
+
+            <section>
+                <h3>Как запустить локально?</h3>
+            </section>
+
+            <section data-background="images/scheme.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>selenium-standalone</h3>
+                <a href="https://github.com/vvo/selenium-standalone">Репозиторий</a>
+            </section>
+
+            <section>
+                <h3>Установка selenium-standalone</h3>
+                <p class="fragment">Установить JDK (Java Development Kit)</p>
+                <pre class="fragment bash console size-XS"><code data-trim>
+# Установка selenium-standalone
+npm install selenium-standalone --save-dev
+
+# Установка необходимых драйверов браузеров
+./node_modules/.bin/selenium-standalone install
+
+# Запуск сервера
+./node_modules/.bin/selenium-standalone start
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>.hermione.conf.js</h3>
+                <pre class="js size-XXS"><code data-trim  data-noescape>
+module.exports = {
+    sets: {
+        desktop: {
+            files: 'tests/desktop'
+        }
+    },
+
+    browsers: {
+        chrome: {
+            desiredCapabilities: {
+                browserName: 'firefox'
+            }
+        }
+    }<span class="fragment fade-out">,
+
+    gridUrl: 'http://localhost:4444/wd/hub'</span>
+};
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-video="images/github_local.mp4"
+                    data-background-size="contain">
+            </section>
+
+        </section>
+
+        <!-- собственный e2e-тест -->
+        <section>
+            <section>
+                <h3>Пишем собственный e2e-тест</h3>
+            </section>
+
+            <section>
+                <h3>Тест-кейс</h3>
+                <blockquote>
+                    <ol>
+                        <li>Зайти на <a href="https://rasp.yandex.ru/trains">rasp.yandex.ru/trains</a></li>
+                        <li>Выбрать город прибытия</li>
+                        <li>Нажать кнопку «Узнать расписание и цены»</li>
+                        <li>Отсортировать по цене</li>
+                    </ol>
+                    <br>
+                    <br>
+                    <b class="fragment">ОР: Каждая последующая цена будет больше предыдущей</b>
+                </blockquote>
+            </section>
+
+            <section
+                    data-background-video="images/hand-trains.mp4"
+                    data-background-size="contain">
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {<span class="fragment" data-fragment-index="1">
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+
+        const actualUrl = await browser.getUrl();
+
+        assert.equal(actualUrl, url);
+
+        /* ... */</span>
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Запуск</h3>
+                <pre class="bash console"><code data-trim>
+> hermione
+
+✓ Проверка страницы расписания поездов: должны отображаться цены
+    в порядке возрастания при сортировке по цене [firefox] - 7491ms
+
+Total: 1 Passed: 1 Failed: 0 Skipped: 0 Retries: 0
+
+                </code></pre>
+            </section>
+
+            <section data-background="images/trains_select.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue(<span class="fragment grow">???</span>, 'Екатеринбург');
+
+        /* ... */
+    });
+});
+                </code></pre>
+
+            </section>
+
+        </section>
+
+        <!-- Локатор -->
+        <section>
+            <section>
+                <h3>Как определить элемент на странице?</h3>
+            </section>
+
+            <section>
+                <h3>Селектор</h3>
+                <blockquote>
+                    цель, идентифицирующая элемент на странице веб-приложения
+                </blockquote>
+            </section>
+
+            <section
+                    data-background-image="images/rasp1.png"
+                    data-background-size="contain">
+            </section>
+
+            <section>
+                <h3>Виды селекторов в webdriverio</h3>
+                <p class="fragment">CSS Query Selector <span class="fragment"> - <b>#id</b></span></p>
+                <p class="fragment">XPATH <span class="fragment"> - <b>//input[@id = 'to']</b></span></p>
+                <a class="fragment" href="http://webdriver.io/guide/usage/selectors.html">другие виды
+                    селекторов</a>
+            </section>
+
+            <section>
+                <h2>Поиск CSS-селектора</h2>
+                <p class="fragment">Ищем семантичное для элемента свойство (атрибут, класс и тп)</p>
+                <blockquote class="fragment">Проверяем уникальность функцией <b>document.querySelectorAll</b></blockquote>
+            </section>
+
+            <section
+                    data-background-image="images/rasp2.png"
+                    data-background-size="contain">
+            </section>
+
+        </section>
+
+        <!-- собственный e2e-тест продолжаем -->
+        <section>
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue(<span class="fragment grow">'#to'</span>, 'Екатеринбург');
+
+        /* ... */
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue('#to', 'Екатеринбург');
+
+        // клик по кнопке "Узнать расписание и цены"
+        await browser.click('.SearchForm__submit');
+
+        /* ... */
+    });
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-video="images/rasp_click_search.mp4"
+                    data-background-size="contain">
+            </section>
+
+            <section data-background="images/rasp4.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue('#to', 'Екатеринбург');
+        await browser.click('.SearchForm__submit');
+        // клик по селекту типа сортировки
+        await browser.click('.SearchSorting__field');
+
+        /* ... */
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Запуск</h3>
+                <pre class="bash console"><code data-trim data-noescape>
+> hermione
+
+✘ Проверка страницы расписания поездов: должны отображаться цены
+  в порядке возрастания при сортировке по цене [firefox] - 4492ms
+Total: 1 Passed: 0 Failed: 1 Skipped: 0 Retries: 0
+
+1) Проверка страницы расписания поездов: должны отображаться цены
+   в порядке возрастания при сортировке по цене
+
+    in file tests/desktop/first.js
+
+    firefox
+    ✘ Error: An element could not be located on the page using
+        the given search parameters.
+                </code></pre>
+            </section>
+
+            <section>
+                <img src="https://yastatic.net/rasp-morda-front/0.1030.0/bundle/desktop/ru/bb658f917dd63b986a46c8088aa824cd.gif">
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue('#to', 'Екатеринбург');
+        await browser.click('.SearchForm__submit');
+        // ожидаем, что загрузочная анимация пропадет
+        await browser.waitForVisible('.Overlay__container',
+                                        5000, true);
+        await browser.click('.SearchSorting__field button');
+
+        /* ... */
+    });
+});
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-video="images/rasp_filter.mp4"
+                    data-background-size="contain">
+            </section>
+
+            <section data-background="images/rasp5.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue('#to', 'Екатеринбург');
+        await browser.click('.SearchForm__submit');
+        await browser.waitForVisible('.Overlay__container',
+                                        5000, true);
+        await browser.click('.SearchSorting__field button');
+        await browser.waitForVisible('[data-value=price]',
+                                        1000);
+        await browser.click('[data-value=price]');
+
+        /* ... */
+    });
+});
+                </code></pre>
+            </section>
+
+            <section data-background="images/rasp6.png" data-background-size='contain'></section>
+
+            <section data-background="images/rasp7.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+const assert = require('assert');
+
+describe('Проверка страницы расписания поездов:', () => {
+    it('должны отображаться цены в порядке возрастания' +
+        'при сортировке по цене', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.setValue('#to', 'Екатеринбург');
+        await browser.click('.SearchForm__submit');
+        await browser.waitForVisible('.Overlay__container',
+                                        5000, true);
+        await browser.click('.SearchSorting__field button');
+        await browser.waitForVisible('[data-value=price]',
+                                        2000);
+        await browser.click('[data-value=price]');
+
+        const prices = await browser
+                    .getText('.TariffsListItem__price');
+
+        checkPrices(prices);
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>checkPrices</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+function checkPrices(prices) {
+    let prev = 0;
+
+    prices.forEach(price => {
+        let curPrice = Number(price.replace(/\D+/g, ''));
+
+        assert(curPrice >= prev, 'Каждая последующая цена' +
+            'должна быть больше предыдущей');
+
+        prev = curPrice;
+    })
+}
+                </code></pre>
+            </section>
+
+            <section
+                    data-background-video="images/rasp-slow.mp4"
+                    data-background-size="contain">
+            </section>
+
+            <section
+                    data-background-video="images/rasp_fast.mp4"
+                    data-background-size="contain">
+            </section>
+
+        </section>
+
+        <section>
+            <h3>Первый кейс автоматизирован</h3>
+            <img style="left: -200px; position: absolute;" src="images/happy_dasha.png" alt="No">
+            <ul class="fragment">
+                <li>8 строк-команд + функция проверки цен</li>
+                <li>Время прогона: 8 секунд</li>
+            </ul>
+        </section>
+
+        <!-- Page Object -->
+        <section>
+            <section>
+                <h2>Проблема</h2>
+
+                <p class="fragment">Во многих тестах используется проверка:</p>
+                <pre class="js size-XXS fragment"><code data-trim data-noescape>
+browser.waitForVisible(<span class="fragment grow">'.Overlay__container'</span>, 5000, true);
+                </code></pre>
+            </section>
+
+            <section>
+                <p>Если селектор экрана загрузки поменяется - придется переписывать все тесты</p>
+                <h5 class="fragment"> Как избежать? </h5>
+            </section>
+
+            <section>
+                <h3>Паттерн Page Object</h3>
+                <blockquote>Разделение кода тестов и описания страниц</blockquote>
+            </section>
+
+            <section>
+                <h5>page-object.js</h5>
+                <pre class="js size-XS"><code data-trim>
+//page-object.js
+module.exports = {
+    overlay: {
+        container: '.Overlay__container'
+    }
+};
+                </code></pre>
+            </section>
+
+            <section>
+                <h5>Тест</h5>
+                <pre class="js size-XXS"><code data-trim>
+const PO = require('../../page-object');
+
+/* ... */
+await browser.waitForVisible(PO.overlay.container, 5000, true);
+/* ... */
+                </code></pre>
+            </section>
+
+        </section>
+
+        <!-- Промышленный конфиг -->
+        <section>
+            <section>
+                <h3>Как может выглядеть конфиг</h3>
+            </section>
+            <section>
+                <h5>hermione.conf.js.</h5>
+
+                <pre class="js size-XXS"><code data-trim>
+module.exports = {
+    browsers: {
+        chrome: {
+            desiredCapabilities: {
+                browserName: 'chrome',
+                version: '59.0'
+            },
+            // сколько параллельно тестов будет проходить
+            sessionsPerBrowser: 2,
+            windowSize: '1440x1000'
+        },
+       firefox: {
+            desiredCapabilities: {
+                browserName: 'firefox'
+            }
+        }
+    },
+    sets: [{
+        files: ['tests/desktop'],
+        // в каких браузерах запустить тесты
+        browsers: ['chrome', 'firefox']
+    }],
+    // количество повторных попыток тестов
+    retry: 1
+};
+                </code></pre>
+            </section>
+
+            <section>
+                <h4>Возможная структура тестов</h4>
+                <pre>
+tests
+├── desktop
+│   ├── desktop-1.js
+│   ├── desktop-2.js
+│   ├── desktop-3.js
+│   └── ...
+└── touch
+    ├── touch-1.js
+    ├── touch-2.js
+    ├── touch-3.js
+    └── ...
+                </pre>
+            </section>
+
+        </section>
+
+        <!-- Иницидент -->
+        <section>
+            <section>
+                <h3>Инцидент</h3>
+                <blockquote>Пропустили дефект в проде, хотя все автотесты проходили</blockquote>
+                <img style="left: -170px; position: absolute;" src="images/cry.png" alt="No">
+            </section>
+
+            <section data-background="images/rasp10.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>Проблема</h3>
+                <blockquote>При «сломанной» верстке тесты проходят</blockquote>
+                <br>
+                <h5 class="fragment">Как можно решить?</h5>
+            </section>
+        </section>
+
+        <!-- Тестирование скриншотами -->
+        <section>
+            <section>
+                <h3>Тестирование скриншотами</h3>
+            </section>
+
+            <section data-background="images/rasp_footer.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>hermione. assertView</h3>
+            </section>
+
+            <section>
+                <h2>assertView. Аргументы</h2>
+                <ul>
+                    <li><b>state</b> – описание состояния снимаемого элемента </li>
+                    <li><b>selector</b> – элемент, скриншот которого необходимо снять</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XS"><code data-trim data-noescape>
+describe('Проверка страницы расписания поездов:', () => {
+    it('должен отображаться футер', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.assertView('plain',
+             '.LandingFooter');
+    });
+});
+                </code></pre>
+            </section>
+
+            <section>
+                <h3>Запуск</h3>
+                <pre class="bash console"><code data-trim>
+> hermione
+
+Проверка страницы расписания поездов: должен отображаться футер
+                                            [firefox] - 4616ms
+Total: 1 Passed: 0 Failed: 1 Skipped: 0 Retries: 0
+
+1) Проверка страницы расписания поездов: должен отображаться футер
+   in file tests/desktop/first.js
+
+   firefox
+     ✘ NoRefImageError: can not find reference image at
+                /screens/d8fae21/firefox/plain.png for "plain" state.
+
+                </code></pre>
+            </section>
+
+            <section>
+                <h5>.hermione.conf.js.</h5>
+
+                <pre class="js size-XXS"><code data-trim>
+const path = require('path');
+
+module.exports = {
+    sets: {
+        desktop: {
+            files: 'tests/desktop'
+        }
+    },
+
+    browsers: {
+        firefox: {
+            desiredCapabilities: {
+                browserName: 'firefox'
+            }
+        }
+    },
+
+    screenshotsDir: test => path.join(path.dirname(test.file),
+                    'screens', test.id(), test.browserId),
+};
+                    </code></pre>
+            </section>
+
+            <section>
+                <h3>Снятие эталонных скриншотов</h3>
+                <pre class="bash console"><code data-trim>
+hermione --update-refs
+                </code></pre>
+            </section>
+
+            <section data-background="images/footer-plain.png" data-background-size='contain'></section>
+
+            <section>
+                <h3>Через год тест не пройдет</h3>
+            </section>
+
+            <section>
+                <h2>assertView. Аргументы</h2>
+                <ul>
+                    <li><b>state</b> – описание состояния снимаемого элемента </li>
+                    <li><b>selector</b> – элемент, скриншот которого необходимо снять</li>
+                    <span class="fragment"><li>opts:
+                        <b>ignoreElements</b> – элементы, которые необходимо игнорировать (закрасить в черный цвет) при снятии скриншота.
+                    </li></span>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Тест</h3>
+                <pre class="js size-XXS"><code data-trim data-noescape>
+describe('Проверка страницы расписания поездов:', () => {
+    it('должен отображаться футер', async function() {
+        const browser = this.browser;
+        const url = 'https://rasp.yandex.ru/trains';
+
+        await browser.url(url);
+        await browser.assertView('plain',
+            '.LandingFooter', {
+            ignoreElements: [
+                '.Footer__copyright'
+            ]
+        });
+    });
+});
+                </code></pre>
+                <pre class="fragment bash console"><code data-trim>
+> hermione
+
+✓ Проверка страницы расписания поездов:
+                    должен отображаться футер [firefox] - 7491ms
+
+Total: 1 Passed: 1 Failed: 0 Skipped: 0 Retries: 0
+
+                </code></pre>
+            </section>
+
+            <section data-background="images/footer-dark.png" data-background-size='contain'></section>
+
+        </section>
+
+        <!-- Итоги -->
+        <section>
+            <section>
+                <h2>Итоги</h2>
+            </section>
+
+            <section>
+                <h3>Рабочий процесс Даши до</h3>
+
+                <p>написание кейсов → тестирование новых фич → регресс</p>
+            </section>
+
+            <section>
+                <h3>Рабочий процесс Даши ПОСЛЕ</h3>
+
+                <p>написание кейсов → тестирование новых фич → написание новых тестов → запуск и наблюдение</p>
+            </section>
+
+            <section>
+                <h2 style="color: darkred">E2E-тесты окупаются не сразу</h2>
+            </section>
+
+            <section>
+                <h2 style="color: darkred">E2E-тесты нужно поддерживать</h2>
+            </section>
+
+            <section>
+                <h2 style="color: darkred">E2E-тесты подходят не всем проектам и командам</h2>
+            </section>
+        </section>
+
+        <section>
+            <h3>Почитать</h3>
+            <ul>
+                <li><a href="https://webdriver.io/guide/usage/selectors.html">Селекторы webdriverio</a></li>
+                <li><a href="http://webdriver.io/api.html">Список команд webdriverio</a></li>
+                <li><a href="https://github.com/gemini-testing/hermione">Hermione</a></li>
+                <li><a href="https://selenium2.ru/">Официальный сайт Selenium</a></li>
+                <li><a href="https://w3c.github.io/webdriver/webdriver-spec.html">Спецификация Webdriver</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h3>Домашнее задание</h3>
+        </section>
+
+    </div>
+</div>
+
+<script src="../js/head.min.js"></script>
+<script src="../js/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        slideNumber: true,
+        history: true,
+        dependencies: [
+            {
+                src: '../js/highlight.js',
+                async: true,
+                condition: function () {
+                    return Boolean(document.querySelector('pre code'));
+                },
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            }
+        ]
+    });
+</script>
+</body>
+</html>

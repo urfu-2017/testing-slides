@@ -9,3 +9,4 @@
 6. [Автотесты. Введение](https://urfu-2017.github.io/testing-slides/06-unit-test/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-01)\]
 7. [Стратегии тестирования. Подходы к разработке. Подмены](https://urfu-2017.github.io/testing-slides/07-mock/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-02)\]
 8. [Управление временем. Интеграционные тесты. Тестирование в браузере](https://urfu-2017.github.io/testing-slides/08-integration/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-03)\]
+9. [Тестирование пользовательских сценариев](https://urfu-2017.github.io/testing-slides/09-e2e/#/) \[[Домашняя работа](https://github.com/urfu-2017/autotests-task-04)\]
