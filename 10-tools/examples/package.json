@@ -1,0 +1,20 @@
+{
+  "name": "10-tools",
+  "version": "0.0.1",
+  "description": "Tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cover": "istanbul cover ./node_modules/.bin/_mocha qa-task-03/tests"
+  },
+  "author": "Sergey Zhigalov <zhigalov@yandex-team.ru>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-yandex": "^1.0.6",
+    "istanbul": "0.4.5",
+    "mocha": "3.3.0",
+    "unit-coverage": "4.0.3"
+  },
+  "dependencies": {}
+}
